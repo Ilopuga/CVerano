@@ -1,31 +1,57 @@
+// Evento que espera a que el DOM esté completamente cargado
 document.addEventListener("DOMContentLoaded", function () {
-  // Selecciona todas las imágenes con li
-  const imagenes = document.querySelectorAll(".carrusel li")
-  // Indice de la imagen visible
-  let indice = 0
-  function cambioImagen() {
-    // Oculta la que está
-    imagenes[indice].style.opacity = 0
-    // incrementa al indice de la imagen actual= indice de la siguiente
-    indice = (indice + 1) % imagenes.length
-    //muestra la siguiente
-    imagenes[indice].style.opacity = 1
-  }
-  // para intercambio cada 5 seg.
-  setInterval(cambioImagen, 3500)
+  iniciarCarrusel()
+  iniciarActividad()
 })
 
-//desplegable de actividades en formulario solicitudes
-function cargarActividades() {
-  fetch("ListarActividad")
-    .then((res) => res.json())
-    .then((res) => {
-      let actividades = document.getElementById("actividades")
-      for (let i = 0; i < res.length; i++) {
-        let option = document.createElement("option")
-        option.text = res[i].nombreA
-        option.value = res[i].cod_actividad
-        actividades.add(option)
-      }
-    })
+function iniciarCarrusel() {
+  const imagenes = document.querySelectorAll(".carrusel li")
+  let indice = 0
+
+  setInterval(() => {
+    imagenes[indice].style.opacity = 0
+    indice = (indice + 1) % imagenes.length
+    imagenes[indice].style.opacity = 1
+  }, 3500)
+}
+
+function iniciarActividad() {
+  let tema = getParameterByName("tema")
+  if (tema) {
+    llamoAct(tema)
+  }
+}
+
+function llamoAct(tema) {
+  fetch("BuscarActividad?tema=" + tema)
+    .then((response) => response.json())
+    .then((data) => pintarActividad(data))
+}
+
+//Función para obtener el valor de un parametro en el GET. Expresiones regulares
+function getParameterByName(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search)
+  return results === null
+    ? ""
+    : decodeURIComponent(results[1].replace(/\+/g, " "))
+}
+
+function cargarImagenBdd(imagenBdd) {
+  document.getElementById("imagenBdd").src = `files/${imagenBdd}`
+}
+
+function pintarActividad(datos) {
+  document.getElementById("cod_actividad").textContent = datos.cod_actividad
+  document.getElementById("nombreA").textContent = datos.nombreA
+  document.getElementById("lugar").textContent = datos.lugar
+  document.getElementById("tema").textContent = datos.tema
+  document.getElementById("descripcion").textContent = datos.descripcion
+  cargarImagenBdd(datos.imagen)
+  document.getElementById("f_inicio").textContent = datos.f_inicio
+  document.getElementById("f_fin").textContent = datos.f_fin
+  document.getElementById("e_min").textContent = datos.e_min
+  document.getElementById("e_max").textContent = datos.e_max
+  document.getElementById("plazas").textContent = datos.plazas
 }

@@ -119,4 +119,14 @@
     <servlet-name>ListarAdministrador</servlet-name>
     <url-pattern>/ListarAdministrador</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BuscarActividad</display-name>
+    <servlet-name>BuscarActividad</servlet-name>
+    <servlet-class>controlador.BuscarActividad</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BuscarActividad</servlet-name>
+    <url-pattern>/BuscarActividad</url-pattern>
+  </servlet-mapping>
 </web-app>

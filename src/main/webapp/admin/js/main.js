@@ -54,7 +54,7 @@ function llamadaEd(cod_actividad, op) {
     .then((data) => pintarFormulario(data))
 }
 
-//Función para otener el valor de un parametro en el GET. Expresiones regulares
+//Función para obtener el valor de un parametro en el GET. Expresiones regulares
 function getParameterByName(name) {
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
   var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),

@@ -183,6 +183,29 @@ public class Actividad {
 	    
 	}
 	
+	
+	//Igual que por código pero por tema para listar una a una
+	public void obtenerPorTema(String tema) throws SQLException {
+
+		DaoActividad dao = DaoActividad.getInstance();
+		Actividad aux = dao.obtenerPorTema(tema);
+	    
+	    // Establezco los valores del actividad seleccionada ayudandome del aux
+	    this.setCod_actividad(aux.getCod_actividad());
+	    this.setNombreA(aux.getNombreA());
+	    this.setLugar(aux.getLugar());
+	    this.setTema(aux.getTema());
+	    this.setDescripcion(aux.getDescripcion());
+	    this.setImagen(aux.getImagen());
+	    this.setF_inicio(aux.getF_inicio());
+	    this.setF_fin(aux.getF_fin());
+	    this.setE_min(aux.getE_min());
+	    this.setE_max(aux.getE_max());
+	    this.setPlazas(aux.getPlazas());
+	    
+	}
+	
+	//Reutilizo para recuperar por Cod_actividad y por tema
 	public String dameJson() {
 		String json = "";
 		

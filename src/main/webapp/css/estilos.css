@@ -389,3 +389,41 @@ nav-item.opened {
   border: none; /* Remueve el borde del botón */
   cursor: pointer; /* Cambia el cursor a pointer para indicar que es clickeable */
 }
+
+/* Mostrar una actividad*/
+.actividad-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.actividad-container h1 {
+  color: #333;
+  font-size: 24px;
+}
+
+.details-container {
+  margin-top: 10px;
+}
+
+.details-container p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.details-container strong {
+  color: #333;
+}
+
+.actividad-imagen {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-top: 20px;
+  display: block;
+}

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Campaña de Verano</title>
     <link rel="stylesheet" href="css/estilos.css" />
-    <link rel="stylesheet" href="css/font.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -46,46 +45,31 @@
     </div>
   </head>
   <body>
-    <h1>¡Bienvenidos a la Campaña de Verano 2024!</h1>
-    <h2>Estas son nuestras actividades</h2>
-    <div class="grid-actividades">
-      <div class="actividades-item">
-        <a href="actividad.html?tema=deporte">
-          <img src="img/deporte.png" alt="Deporte"
-        /></a>
-        <p>DEPORTE</p>
-      </div>
-      <div class="actividades-item">
-        <a href="actividad.html?tema=acuatico">
-          <img src="img/acuatico.png" alt="Acuático"
-        /></a>
-        <p>ACUÁTICO</p>
-      </div>
-      <div class="actividades-item">
-        <a href="actividad.html?tema=internacional">
-          <img src="img/internacional.png" alt="Intercambio"
-        /></a>
-        <p>INTERCAMBIO</p>
-      </div>
-      <div class="actividades-item">
-        <a href="actividad.html?tema=aventura">
-          <img src="img/aventura.png" alt="Aventura"
-        /></a>
-        <p>AVENTURA</p>
-      </div>
-      <div class="actividades-item">
-        <a href="actividad.html?tema=cooperacion">
-          <img src="img/cooperacion.png" alt="Cooperación"
-        /></a>
-        <p>COOPERACIÓN</p>
-      </div>
-      <div class="actividades-item">
-        <a href="actividad.html?tema=ocio">
-          <img src="img/ocio.png" alt="Ocio"
-        /></a>
-        <p>OCIO</p>
-      </div>
-    </div>
+    <h1>Actividad seleccionada</h1>
+    <section>
+      <section>
+        <div id="actividadContainer" class="actividad-container">
+          <h1 id="nombreA">Nombre de la Actividad</h1>
+          <div class="details-container">
+            <p><strong>ID:</strong> <span id="cod_actividad"></span></p>
+            <p><strong>Lugar:</strong> <span id="lugar"></span></p>
+            <p><strong>Tema:</strong> <span id="tema"></span></p>
+            <p><strong>Descripción:</strong> <span id="descripcion"></span></p>
+            <p><strong>Fecha de inicio:</strong> <span id="f_inicio"></span></p>
+            <p><strong>Fecha de fin:</strong> <span id="f_fin"></span></p>
+            <p><strong>Edad mínima:</strong> <span id="e_min"></span></p>
+            <p><strong>Edad máxima:</strong> <span id="e_max"></span></p>
+            <p><strong>Plazas:</strong> <span id="plazas"></span></p>
+            <img
+              id="imagenBdd"
+              src=""
+              alt="Imagen de la Actividad"
+              class="actividad-imagen"
+            />
+          </div>
+        </div>
+      </section>
+    </section>
     <script src="js/main.js"></script>
   </body>
   <footer class="footer">

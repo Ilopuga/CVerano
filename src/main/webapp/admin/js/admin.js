@@ -1,5 +1,4 @@
-//Listar administradores
-
+//SOLO Listar administradores
 function llamada() {
   fetch("../ListarAdministrador?op=1")
     .then((response) => response.json())

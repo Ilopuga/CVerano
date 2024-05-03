@@ -21,7 +21,7 @@ public class DaoActividad {
 		this.con = DBConexion.getConexion();
 
 	}
-	
+
 	// Singelton
 	public static DaoActividad getInstance() throws SQLException {
 		if (instance == null) {
@@ -50,27 +50,42 @@ public class DaoActividad {
 		ps.close();
 
 	}
-	
+
 	public Actividad obtenerPorCod_actividad(int cod_actividad) throws SQLException {
+
+		String sql = "SELECT * FROM actividad WHERE cod_actividad=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, cod_actividad);
+
+		ResultSet rs = ps.executeQuery();
+
+		rs.next();
+
+		Actividad a = new Actividad(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+				rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10), rs.getInt(11));
+
+		return a;
+	}
 	
-			String sql = "SELECT * FROM actividad WHERE cod_actividad=?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, cod_actividad);
+	public Actividad obtenerPorTema(String tema) throws SQLException {
+		//1 paso. conecto y le paso la query directamente. En 2 pasos en obtenerPorCod
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM actividad WHERE tema=?");
+		ps.setString(1, tema);
 
-			ResultSet rs = ps.executeQuery();
+		ResultSet rs = ps.executeQuery();
 
-			rs.next();
+		rs.next();
 
-			Actividad a = new Actividad(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10), rs.getInt(11));
+		Actividad at = new Actividad(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+				rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10), rs.getInt(11));
 
-			return a;
-		}	
-		
-	
-	
-	//Lo pongo private para dar seguridad. Llamaré al ListarJson
+		return at;
+	}
+
+
+	// Lo pongo private para dar seguridad. Llamaré al ListarJson
 	private ArrayList<Actividad> listar() throws SQLException {
-		// Aquí directamente le paso la query
+		// conecto y le paso la query directamente
 		PreparedStatement ps = con.prepareStatement("SELECT * FROM actividad");
 
 		ResultSet rs = ps.executeQuery();
@@ -85,7 +100,8 @@ public class DaoActividad {
 
 				result = new ArrayList<Actividad>();
 			}
-			// solo defino el tipo y la posición pero también puedo poner el nombre, me guía mejor
+			// solo defino el tipo y la posición pero también puedo poner el nombre, me guía
+			// mejor
 			result.add(new Actividad(rs.getInt("cod_actividad"), rs.getString("nombreA"), rs.getString("lugar"),
 					rs.getString("tema"), rs.getString("descripcion"), rs.getString("imagen"), rs.getString("f_inicio"),
 					rs.getString("f_fin"), rs.getInt("e_min"), rs.getInt("e_max"), rs.getInt("plazas")));
@@ -96,8 +112,9 @@ public class DaoActividad {
 
 	}
 
+
 	public String listarJson() throws SQLException {
-		//Meto en json lo que me devuelve del método listar
+		// Meto en json lo que me devuelve del método listar
 		String json = "";
 		// Utilizo esta librería
 		Gson gson = new Gson();
@@ -108,12 +125,14 @@ public class DaoActividad {
 
 	}
 	
+
+
 	public Actividad actualizar(Actividad a) throws SQLException {
-		
+
 		String sql = "UPDATE actividad SET nombreA = ?, lugar = ?, tema = ?, descripcion = ?, imagen = ?, f_inicio = ?, f_fin = ?, e_min = ?, e_max = ?, plazas = ? WHERE cod_actividad = ?";
-		
-	    PreparedStatement ps = con.prepareStatement(sql);
-	    ps.setString(1, a.getNombreA());
+
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, a.getNombreA());
 		ps.setString(2, a.getLugar());
 		ps.setString(3, a.getTema());
 		ps.setString(4, a.getDescripcion());
@@ -125,17 +144,17 @@ public class DaoActividad {
 		ps.setInt(10, a.getPlazas());
 		ps.setInt(11, a.getCod_actividad()); // Al final porque es el criterio en el WHERE
 
-	    int result = ps.executeUpdate();
+		int result = ps.executeUpdate();
 
-	    ps.close();
-	    return a;
+		ps.close();
+		return a;
 	}
-	
-public void borrar(int cod_actividad) throws SQLException {
-		
+
+	public void borrar(int cod_actividad) throws SQLException {
+
 		String sql = "DELETE FROM actividad WHERE cod_actividad=?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1,cod_actividad);
+		ps.setInt(1, cod_actividad);
 		int filas = ps.executeUpdate();
 		ps.close();
 	}
