@@ -189,7 +189,7 @@ nav-item.opened {
     height: 80px;
   }
 }
-/*Inicio */
+/*Inicio Home */
 .texto-inicio {
   width: 80%; /* Ancho del div */
   margin: 0 auto; /* Margen superior e inferior en 0 y margen izquierdo y derecho automático para centrar */
@@ -199,7 +199,7 @@ nav-item.opened {
   margin: 15px;
 }
 
-/*Actividades*/
+/*Actividades grid*/
 .grid-actividades {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -337,21 +337,21 @@ nav-item.opened {
   }
 }
 
-.contenido-actividad {
+/*.contenido-actividad {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* 1 fracción para la imagen, 2 fracciones para el texto */
-  gap: 20px; /* Espacio entre las columnas */
-  margin: 20px auto; /* Centra el contenedor en la página */
+  grid-template-columns: 1fr 2fr; 
+  gap: 20px; /
+  margin: 20px auto; 
   padding: 20px;
 }
 
 .actividad-imagen {
-  width: 80%; /* Ajusta la imagen al espacio de su columna */
+  width: 80%; 
   margin: auto;
 }
 
 .actividad-texto {
-  padding: 0 20px; /* Añade padding para separar el texto de los bordes del grid */
+  padding: 0 20px; /
 }
 
 @media (max-width: 700px) {
@@ -364,9 +364,9 @@ nav-item.opened {
   }
 
   .actividad-texto {
-    padding: 10px; /* Ajusta el padding para pantallas más pequeñas */
+    padding: 10px; 
   }
-}
+}*/
 
 .caja-login form {
   width: 100%; /* Establece el ancho del formulario al 100% de su contenedor */
@@ -392,38 +392,26 @@ nav-item.opened {
 
 /* Mostrar una actividad*/
 .actividad-container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
+  max-width: 60%;
+  margin: auto;
+  padding: 10px;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  font-family: Arial, sans-serif;
 }
 
-.actividad-container h1 {
-  color: #333;
-  font-size: 24px;
-}
-
-.details-container {
-  margin-top: 10px;
-}
-
-.details-container p {
+.detalle-container p {
   font-size: 16px;
   color: #666;
   line-height: 1.5;
 }
 
-.details-container strong {
-  color: #333;
-}
-
 .actividad-imagen {
-  width: 100%;
+  width: 90%;
   max-width: 400px;
   height: auto;
   margin-top: 20px;
   display: block;
+  border-radius: 8px;
+  margin:auto;
+
 }
