@@ -47,7 +47,7 @@ public class BuscarActividad extends HttpServlet {
 			try {
 				a.obtenerPorTema(tema);
 				respuesta.print(a.dameJson());
-				System.out.println(a.dameJson());//Comprobar que me llega desde la Bdd. Siguiente HTML
+				//System.out.println(a.dameJson());//Comprobar que me llega desde la Bdd. Siguiente HTML
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

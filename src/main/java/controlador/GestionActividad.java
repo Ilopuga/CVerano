@@ -30,7 +30,7 @@ public class GestionActividad extends HttpServlet {
 
 	// Indico la carpeta en la que voy a guardar los archivos
 	// CUANDO ESTE EN EL SERVIDOR private String pathFiles = "/files";
-	private String pathFiles = "C:\\Users\\ilopu\\eclipse-workspace\\Verano\\src\\main\\webapp\\files";
+	private String pathFiles = "C:\\Users\\ilopu\\eclipse-workspace\\CVerano\\src\\main\\webapp\\files";
 	private File uploads = new File(pathFiles);
 
 	/**
