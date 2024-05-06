@@ -58,10 +58,10 @@ public class Login extends HttpServlet {
 				
 				sesion.setAttribute("usuario", a.getUsuario());
 				
-				response.sendRedirect("admin/gestion.html");
+				response.sendRedirect("admin/gestion.html?usuario="+usuario+"");
 			
 			} else {
-	            System.out.println("Login fallido");
+	            //System.out.println("Fallo login");
 	            response.sendRedirect("login.html?error=true");
 	        }
 		} catch (SQLException | IOException e) {

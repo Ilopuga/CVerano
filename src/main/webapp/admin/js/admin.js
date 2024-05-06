@@ -65,10 +65,25 @@ function borrar(id) {
   }
 }
 
+function usuarioLogueado() {
+  let usuario = getParameterByName("usuario")
+  if (usuario) {
+    sessionStorage.setItem("usuario", usuario) // Guarda el nombre del usuario en sessionStorage
+    document.getElementById("usuarioLogueado").textContent =
+      "Nombre usuario: " + usuario
+  } else {
+    // Si no hay un nuevo usuario en la URL, intenta recuperar un nombre de usuario existente de sessionStorage
+    usuario = sessionStorage.getItem("usuario")
+    if (usuario) {
+      document.getElementById("usuarioLogueado").textContent =
+        "Nombre usuario: " + usuario
+    }
+  }
+}
+
 window.onload = function () {
   llamada()
-
-  // Parámetros desde la URL y función para cargar los detalles del admin a editar
+  usuarioLogueado() // Asegura que el nombre del usuario se muestra o recupera de sessionStorage
   let id = getParameterByName("id")
   let op = getParameterByName("op")
   if (id && op) {
