@@ -78,12 +78,12 @@ public class Administrador {
 
 	}
 
-	public boolean logeo(String pass) throws SQLException {
+	public boolean logueo(String pass) throws SQLException {
 
 		boolean ok = false;
 
 		DaoAdministrador dao = DaoAdministrador.getInstance();
-		Administrador aux = dao.logeando(this, pass);
+		Administrador aux = dao.logueando(this, pass);
 
 		if (aux != null) {
 			ok = true;

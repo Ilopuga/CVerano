@@ -52,11 +52,11 @@ public class Login extends HttpServlet {
 		//proteccion
 		
 		try {
-			if(a.logeo(pass)) {
+			if(a.logueo(pass)) {
 				
 				sesion = request.getSession();
 				
-				sesion.setAttribute("id", a.getId());
+				sesion.setAttribute("usuario", a.getUsuario());
 				
 				response.sendRedirect("admin/gestion.html");
 			

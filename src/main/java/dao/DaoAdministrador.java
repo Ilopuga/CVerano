@@ -58,7 +58,7 @@ public class DaoAdministrador {
 		return ad;
 	}
 
-	public Administrador logeando(Administrador a, String pass) throws SQLException {
+	public Administrador logueando(Administrador a, String pass) throws SQLException {
 
 		String sql = "SELECT * FROM admin WHERE usuario=? AND pass=?";
 		PreparedStatement ps = con.prepareStatement(sql);
