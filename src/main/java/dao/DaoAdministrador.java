@@ -21,7 +21,7 @@ public class DaoAdministrador {
 		this.con = DBConexion.getConexion();
 
 	}
-	
+
 	// Singelton
 	public static DaoAdministrador getInstance() throws SQLException {
 		if (instance == null) {
@@ -56,6 +56,23 @@ public class DaoAdministrador {
 		Administrador ad = new Administrador(rs.getInt(1), rs.getString(2), rs.getString(3));
 
 		return ad;
+	}
+
+	public Administrador logeando(Administrador a, String pass) throws SQLException {
+
+		String sql = "SELECT * FROM admin WHERE usuario=? AND pass=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, a.getUsuario());
+		ps.setString(2, pass);
+
+		ResultSet rs = ps.executeQuery();
+
+		if (rs.next()) {
+		    Administrador aux = new Administrador(rs.getInt(1), rs.getString(2), rs.getString(3));
+		    return aux;
+		} else {
+		    return null; // Error empty rs
+		}
 	}
 
 	// Lo pongo private para dar seguridad. Llamaré al ListarJson
@@ -97,29 +114,28 @@ public class DaoAdministrador {
 
 	}
 
-public Administrador actualizar(Administrador a) throws SQLException {
-		
+	public Administrador actualizar(Administrador a) throws SQLException {
+
 		String sql = "UPDATE admin SET usuario = ?, pass = ? WHERE id = ?";
-		
-	    PreparedStatement ps = con.prepareStatement(sql);
-	    ps.setString(1, a.getUsuario());
+
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, a.getUsuario());
 		ps.setString(2, a.getPass());
 		ps.setInt(3, a.getId()); // Al final porque es el criterio en el WHERE
 
-	    int result = ps.executeUpdate();
+		int result = ps.executeUpdate();
 
-	    ps.close();
-	    return a;
+		ps.close();
+		return a;
 	}
-	
-public void borrar(int id) throws SQLException {
-		
+
+	public void borrar(int id) throws SQLException {
+
 		String sql = "DELETE FROM admin WHERE id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1,id);
+		ps.setInt(1, id);
 		int filas = ps.executeUpdate();
 		ps.close();
 	}
 
 }
-

@@ -315,6 +315,7 @@ nav-item.opened {
 .form-add input[type="email"],
 .form-add input[type="number"],
 .form-add input[type="date"],
+.form-add input[type="password"],
 .form-add select {
   width: 100%;
   padding: 8px;
@@ -415,3 +416,40 @@ nav-item.opened {
   margin:auto;
 
 }
+.form-login {
+  background: url("../img/caja_login.png") no-repeat center center;
+  background-size: 100%;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-login form {
+  width: 50%; /* Ancho del formulario */
+}
+/* Media query para pantallas de menos de 700px */
+@media (max-width: 700px) {
+  .form-login {
+    height: 200px; /* Reduce la altura del contenedor del formulario */
+    background-size: cover; /* Ajusta el tamaño de la imagen de fondo para cubrir el espacio reducido */
+  }
+}
+
+/* Estilo para inputs con error */
+.form-add input.error-input {
+  border: 2px solid red; /* Hace el borde más notorio y rojo */
+}
+
+/* Cambiar color de placeholder para inputs con error */
+.form-add input.error-input::placeholder {
+  color: red; /* Asegura que el color rojo se aplique */
+}
+
+/* Si decides utilizar una clase para mensajes de error debajo de los inputs
+.error-message {
+  color: red;
+  font-size: 0.8em; 
+  margin-top: 10px; 
+}*/
