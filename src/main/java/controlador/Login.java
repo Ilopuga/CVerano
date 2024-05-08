@@ -30,8 +30,17 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+		//recoge el parámetro action desde la url
+		String action = request.getParameter("action");
+		//Si es logout 
+        if ("logout".equals(action)) {
+            HttpSession session = request.getSession(false); // pide la sesión
+            if (session != null) { //existe
+                session.invalidate(); // invalida
+            }
+            response.sendRedirect("/Verano/index.html"); // Redirigir a la página principal
+        }
+    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -68,20 +77,6 @@ public class Login extends HttpServlet {
 		}
 	}
 	
-	/*public static String myMD5(String pass) {
-	    try {
-	        MessageDigest md = MessageDigest.getInstance("MD5");
-	        md.update(pass.getBytes());
-	        byte[] digest = md.digest();
-	        BigInteger no = new BigInteger(1, digest);
-	        String hashtext = no.toString(16);
-	        while (hashtext.length() < 32) {
-	            hashtext = "0" + hashtext;
-	        }
-	        return hashtext;
-	    } catch (NoSuchAlgorithmException e) {
-	        throw new RuntimeException(e);
-	    }
-	}*/
+
 
 }
