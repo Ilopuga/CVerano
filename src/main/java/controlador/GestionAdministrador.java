@@ -46,12 +46,13 @@ public class GestionAdministrador extends HttpServlet {
 		
 		String usuario = request.getParameter("usuario");
 		String pass = request.getParameter("pass");
+		String hashedPass = Administrador.myMD5(pass);
 		String id = request.getParameter("id");
 		
 
 		Administrador a;
 		try {
-			a = new Administrador(usuario, pass);
+			a = new Administrador(usuario, hashedPass); //Le paso la contraseña hasheada
 			if (id == null || id.trim().isEmpty()) {
 				DaoAdministrador dao = new DaoAdministrador();
 				dao.insertar(a);
@@ -62,7 +63,7 @@ public class GestionAdministrador extends HttpServlet {
 				a.actualizar();
 
 			}
-			response.sendRedirect("admin/add_admin.html");
+			response.sendRedirect("admin/list_admin.html");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

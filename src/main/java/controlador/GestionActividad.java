@@ -116,7 +116,7 @@ public class GestionActividad extends HttpServlet {
 				a.actualizar();
 
 			}
-			response.sendRedirect("admin/add_actividad.html");
+			response.sendRedirect("admin/list_actividad.html");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

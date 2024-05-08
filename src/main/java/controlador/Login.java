@@ -1,8 +1,6 @@
 package controlador;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -43,7 +41,7 @@ public class Login extends HttpServlet {
 
 
 		String usuario = request.getParameter("usuario");
-		String pass = request.getParameter("pass");
+		String pass = Administrador.myMD5(request.getParameter("pass"));
 		
 		Administrador a = new Administrador();
 		a.setUsuario(usuario);
@@ -70,20 +68,20 @@ public class Login extends HttpServlet {
 		}
 	}
 	
-	/*public static String getMD5(String input) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] messageDigest = md.digest(input.getBytes());
-            BigInteger number = new BigInteger(1, messageDigest);
-            String hashtext = number.toString(16);
-
-            while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
-            }
-            return hashtext;
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
+	/*public static String myMD5(String pass) {
+	    try {
+	        MessageDigest md = MessageDigest.getInstance("MD5");
+	        md.update(pass.getBytes());
+	        byte[] digest = md.digest();
+	        BigInteger no = new BigInteger(1, digest);
+	        String hashtext = no.toString(16);
+	        while (hashtext.length() < 32) {
+	            hashtext = "0" + hashtext;
+	        }
+	        return hashtext;
+	    } catch (NoSuchAlgorithmException e) {
+	        throw new RuntimeException(e);
+	    }
+	}*/
 
 }

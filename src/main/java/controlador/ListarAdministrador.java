@@ -48,11 +48,11 @@ public class ListarAdministrador extends HttpServlet {
 		if(opcion == 2) {
 			//proceso logica edicion. El id se lo paso al metodo obtener... y me da el Json de ese registro
 			int id = Integer.parseInt(request.getParameter("id"));
-			Administrador ad = new Administrador();
+			Administrador a = new Administrador();
 			try {
-				ad.obtenerPorId(id);
-				respuesta.print(ad.dameJson());
-				//System.out.println(ad.dameJson());
+				a.obtenerPorId(id);
+				respuesta.print(a.dameJson());
+				//System.out.println(a.dameJson());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

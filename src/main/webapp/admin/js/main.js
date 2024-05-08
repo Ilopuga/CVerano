@@ -1,3 +1,33 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Verifica si hay parámetros de usuario en la URL
+  let usuario = getParameterByName("usuario")
+  if (usuario) {
+    sessionStorage.setItem("usuario", usuario) // Guarda el nombre del usuario en sessionStorage
+  }
+
+  mostrarUsuarioLogueado()
+  gestionarActividades()
+})
+
+function mostrarUsuarioLogueado() {
+  let usuario = sessionStorage.getItem("usuario")
+  let usuarioDisplay = document.getElementById("usuarioLogueado")
+  if (usuario && usuarioDisplay) {
+    usuarioDisplay.textContent = "Nombre usuario: " + usuario
+  }
+}
+
+function gestionarActividades() {
+  llamada() // Llama a cargar la tabla de administradores
+
+  // Parámetros desde la URL para editar
+  let cod_actividad = getParameterByName("cod_actividad")
+  let op = getParameterByName("op")
+  if (cod_actividad && op) {
+    llamadaEd(cod_actividad, op)
+  }
+}
+
 //Listar tabla actividades
 
 function llamada() {
@@ -99,16 +129,6 @@ function borrar(cod_actividad) {
   }
 }
 
-window.onload = function () {
-  llamada()
-
-  // Parámetros desde la URL y función para cargar los detalles de la actividad a editar
-  let cod_actividad = getParameterByName("cod_actividad")
-  let op = getParameterByName("op")
-  if (cod_actividad && op) {
-    llamadaEd(cod_actividad, op)
-  }
-}
 //validar formulario
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("AltaActividad").onsubmit = function (event) {
@@ -155,4 +175,14 @@ function validarFormulario() {
 
   // Todo true, enviar el formulario
   document.getElementById("AltaActividad").submit()
+}
+
+function mostrarUsuarioLogueado() {
+  let usuario = sessionStorage.getItem("usuario")
+  if (usuario) {
+    let usuarioDisplay = document.getElementById("usuarioLogueado")
+    if (usuarioDisplay) {
+      usuarioDisplay.textContent = "Nombre usuario: " + usuario
+    }
+  }
 }

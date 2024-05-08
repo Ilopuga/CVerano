@@ -1,5 +1,8 @@
 package modelo;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import com.google.gson.Gson;
@@ -110,6 +113,23 @@ public class Administrador {
 	public void borrar(int id) throws SQLException {
 		DaoAdministrador.getInstance().borrar(id);
 	}
+	
+	public static String myMD5(String pass) {
+	    try {
+	        MessageDigest md = MessageDigest.getInstance("MD5");
+	        md.update(pass.getBytes());
+	        byte[] digest = md.digest();
+	        BigInteger no = new BigInteger(1, digest);
+	        String hashtext = no.toString(16);
+	        while (hashtext.length() < 32) {
+	            hashtext = "0" + hashtext;
+	        }
+	        return hashtext;
+	    } catch (NoSuchAlgorithmException e) {
+	        throw new RuntimeException(e);
+	    }
+	}
+	
 
 	@Override
 	public String toString() {
