@@ -45,31 +45,31 @@ public class GestionAdministrador extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String usuario = request.getParameter("usuario");
-		String pass = request.getParameter("pass");
-		String hashedPass = Administrador.myMD5(pass);
-		String id = request.getParameter("id");
-		
+	    String pass = request.getParameter("pass");
+	    String hashedPass = Administrador.myMD5(pass);
+	    String id = request.getParameter("id");
+	    
+	    try {
+	        DaoAdministrador dao = new DaoAdministrador();
+	        if (dao.usuarioExiste(usuario)) {
+	            // Usuario ya existe, enviar respuesta para alerta
+	            response.setContentType("text/html");
+		        response.sendRedirect("admin/error.html?error=2");
 
-		Administrador a;
-		try {
-			a = new Administrador(usuario, hashedPass); //Le paso la contraseña hasheada
-			if (id == null || id.trim().isEmpty()) {
-				DaoAdministrador dao = new DaoAdministrador();
-				dao.insertar(a);
-
-			} else {
-				int idInt = Integer.parseInt(id);
-				a.setId(idInt);
-				a.actualizar();
-
-			}
-			response.sendRedirect("admin/list_admin.html");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			// Redirige a add_actividad con un parámetro de error
-			response.sendRedirect("admin/error.html?error=Error al insertar en la base de datos");
-		}
-
+	        } else {
+	            Administrador a = new Administrador(usuario, hashedPass); //Le paso la contraseña hasheada
+	            if (id == null || id.trim().isEmpty()) {
+	                dao.insertar(a);
+	            } else {
+	                int idInt = Integer.parseInt(id);
+	                a.setId(idInt);
+	                a.actualizar();
+	            }
+	            response.sendRedirect("admin/list_admin.html");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        response.sendRedirect("admin/error.html?error=1");
+	    }
 	}
 }

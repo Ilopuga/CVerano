@@ -137,5 +137,14 @@ public class DaoAdministrador {
 		int filas = ps.executeUpdate();
 		ps.close();
 	}
+	
+	public boolean usuarioExiste(String usuario) throws SQLException {
+	    String sql = "SELECT COUNT(*) FROM admin WHERE usuario=?";
+	    PreparedStatement ps = con.prepareStatement(sql);
+	    ps.setString(1, usuario);
+	    ResultSet rs = ps.executeQuery();
+	    rs.next();
+	    return rs.getInt(1) > 0;  // Verifica si hay al menos un registro
+	}
 
 }

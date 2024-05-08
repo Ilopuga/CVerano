@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   mostrarUsuarioLogueado()
   gestionarActividades()
+  error()
 })
 
 function mostrarUsuarioLogueado() {
@@ -86,12 +87,12 @@ function llamadaEd(cod_actividad, op) {
 
 //Función para obtener el valor de un parametro en el GET. Expresiones regulares
 function getParameterByName(name) {
-  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
-  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search)
-  return results === null
-    ? ""
-    : decodeURIComponent(results[1].replace(/\+/g, " "))
+  name = name.replace(/[\[\]]/g, "\\$&")
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(window.location.href)
+  if (!results) return null
+  if (!results[2]) return ""
+  return decodeURIComponent(results[2].replace(/\+/g, " "))
 }
 
 // Carga la imagen que hay en la bdd
@@ -183,6 +184,29 @@ function mostrarUsuarioLogueado() {
     let usuarioDisplay = document.getElementById("usuarioLogueado")
     if (usuarioDisplay) {
       usuarioDisplay.textContent = "Nombre usuario: " + usuario
+    }
+  }
+}
+
+// Obtener el mensaje de error de la URL
+function error() {
+  let error = getParameterByName("error")
+  let mensajeError = document.getElementById("errorMensaje")
+
+  if (error) {
+    switch (error) {
+      case "1":
+        mensajeError.textContent =
+          "Error. No se ha podido insertar en la base de datos. Contacte con el administrador."
+        break
+      case "2":
+        mensajeError.textContent =
+          "Error. Registro ya existente, vuelva a intentarlo eligiendo otro nombre de usuario."
+        break
+      default:
+        mensajeError.textContent =
+          "Error desconocido. Por favor, contacte con el administrador."
+        break
     }
   }
 }

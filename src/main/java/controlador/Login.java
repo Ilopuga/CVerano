@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//recoge el parámetro action desde la url
+		//recoge el parámetro de action desde la url
 		String action = request.getParameter("action");
 		//Si es logout 
         if ("logout".equals(action)) {
