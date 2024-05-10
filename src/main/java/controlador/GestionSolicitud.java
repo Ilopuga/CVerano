@@ -55,7 +55,7 @@ public class GestionSolicitud extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String dni = request.getParameter("dni");
-		String actividad = request.getParameter("actividad");
+		int cod_actividad = Integer.parseInt(request.getParameter("cod_actividad"));
 		String nombre = request.getParameter("nombre");
 		String apellido1 = request.getParameter("apellido1");
 		String apellido2 = request.getParameter("apellido2");
@@ -76,7 +76,7 @@ public class GestionSolicitud extends HttpServlet {
             if (dao.dniExiste(dni)) {
                 response.sendRedirect("error.html?error=1");
             } else {
-                Solicitud s = new Solicitud(dni, actividad, nombre, apellido1, apellido2, email, direccion, telefono, f_nacimiento);
+                Solicitud s = new Solicitud(dni, cod_actividad, nombre, apellido1, apellido2, email, direccion, telefono, f_nacimiento);
                 dao.insertar(s);
                 //Justo después de insertar llamo a buscar dni y me saca el json de ese registro
                 s = dao.obtenerPorDni(dni);

@@ -1,11 +1,17 @@
-//Función para obtener el valor de un parametro en el GET. Expresiones regulares
-function getParameterByName(name) {
-  name = name.replace(/[\[\]]/g, "\\$&")
-  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-    results = regex.exec(window.location.href)
-  if (!results) return null
-  if (!results[2]) return ""
-  return decodeURIComponent(results[2].replace(/\+/g, " "))
+// Evento que espera a que el DOM esté completamente cargado
+document.addEventListener("DOMContentLoaded", function () {
+  iniciarCarrusel()
+})
+
+function iniciarCarrusel() {
+  const imagenes = document.querySelectorAll(".carrusel li")
+  let indice = 0
+
+  setInterval(() => {
+    imagenes[indice].style.opacity = 0
+    indice = (indice + 1) % imagenes.length
+    imagenes[indice].style.opacity = 1
+  }, 3500)
 }
 
 fetch("SelectActividad")
@@ -13,11 +19,11 @@ fetch("SelectActividad")
     if (!response.ok) {
       throw new Error("La solicitud no se pudo completar.")
     }
-    return response.text() // Obtener el texto de la respuesta
+    return response.json() // Obtener el JSON de la respuesta
   })
-  .then((text) => {
-    const options = text.split(",") // Dividir el texto en un array de opciones
-    const select = document.getElementById("miSelect")
+  .then((json) => {
+    const options = json // Utilizar directamente el array JSON
+    const select = document.getElementById("actividadSelect")
 
     // Agregar la opción predeterminada "Seleccione actividad"
     const defaultOption = document.createElement("option")
@@ -32,6 +38,15 @@ fetch("SelectActividad")
       option.text = optionText
       option.value = optionText
       select.appendChild(option)
+    })
+
+    // Escuchar el evento de cambio en el select
+    select.addEventListener("change", function () {
+      // Obtener el valor seleccionado del select
+      var selectedValue = this.value
+
+      // Actualizar el valor del campo de entrada
+      document.getElementById("cod_actividad").value = selectedValue
     })
   })
   .catch((error) => {

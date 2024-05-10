@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   iniciarCarrusel()
   iniciarActividad()
   ErrorLogin()
+  error()
 })
 
 function iniciarCarrusel() {
@@ -66,5 +67,31 @@ function ErrorLogin() {
     campoPass.placeholder = "Contraseña incorrecta"
     campoUsuario.classList.add("error-input") // Añade clase de error para reconocer el campo. CSS
     campoPass.classList.add("error-input")
+  }
+}
+
+// Obtener el mensaje de error de la URL
+function error() {
+  let error = getParameterByName("error")
+  let mensajeError = document.getElementById("errorMensaje")
+
+  if (error) {
+    switch (error) {
+      case "1":
+        mensajeError.textContent =
+          "Error. Usuario duplicado, este DNI ya ha realizado una solicitud. Si desea modificar algún dato, contacte con ayudame@verano.com"
+        break
+      case "2":
+        mensajeError.textContent =
+          "Error. Error en la base de datos. No se ha guardado. Contacte con el administrador."
+        break
+      case "3":
+        mensajeError.textContent =
+          "Error. No se ha podido cargar el listado. Contacte con el administrador."
+      default:
+        mensajeError.textContent =
+          "Error desconocido. Por favor, contacte con el administrador."
+        break
+    }
   }
 }

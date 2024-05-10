@@ -9,7 +9,7 @@ import dao.DaoSolicitud;
 public class Solicitud {
 	private int id;
 	private String dni;
-	private String actividad;
+	private int cod_actividad;
 	private String nombre;
 	private String apellido1;
 	private String apellido2;
@@ -26,13 +26,13 @@ public class Solicitud {
 		
 	}
 
-	public Solicitud(int id, String dni, String actividad, String nombre, String apellido1, String apellido2,
+	public Solicitud(int id, String dni, int cod_actividad, String nombre, String apellido1, String apellido2,
 			String email, String direccion, int telefono, String f_nacimiento, int num_sorteo, boolean seleccionado,
 			boolean pago, String estado) {
 		super();
 		this.id = id;
 		this.dni = dni;
-		this.actividad = actividad;
+		this.cod_actividad = cod_actividad;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
@@ -47,11 +47,11 @@ public class Solicitud {
 	}
 
 	//Otro sin id para mandar a la BDD. Campos del formulario para usuario externo
-	public Solicitud(String dni, String actividad, String nombre, String apellido1, String apellido2, String email,
+	public Solicitud(String dni, int cod_actividad, String nombre, String apellido1, String apellido2, String email,
 			String direccion, int telefono, String f_nacimiento) {
 		super();
 		this.dni = dni;
-		this.actividad = actividad;
+		this.cod_actividad = cod_actividad;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
@@ -78,12 +78,12 @@ public class Solicitud {
 		this.dni = dni;
 	}
 
-	public String getActividad() {
-		return actividad;
+	public int getCod_actividad() {
+		return cod_actividad;
 	}
 
-	public void setActividad(String atividad) {
-		this.actividad = actividad;
+	public void setCod_actividad(int cod_actividad) {
+		this.cod_actividad = cod_actividad;
 	}
 
 	public String getNombre() {
@@ -187,7 +187,7 @@ public class Solicitud {
 	    // Establecer propiedades de la solicitud actual con los valores de la solicitud seleccionada
 	    this.setId(aux.getId());
 	    this.setDni(aux.getDni());
-	    this.setActividad(aux.getActividad());
+	    this.setCod_actividad(aux.getCod_actividad());
 	    this.setNombre(aux.getNombre());
 	    this.setApellido1(aux.getApellido1());
 	    this.setApellido2(aux.getApellido2());
@@ -209,7 +209,7 @@ public class Solicitud {
 	    // Establecer propiedades de la solicitud actual con los valores de la solicitud seleccionada
 	    this.setId(aux.getId());
 	    this.setDni(aux.getDni());
-	    this.setActividad(aux.getActividad());
+	    this.setCod_actividad(aux.getCod_actividad());
 	    this.setNombre(aux.getNombre());
 	    this.setApellido1(aux.getApellido1());
 	    this.setApellido2(aux.getApellido2());
@@ -247,7 +247,7 @@ public class Solicitud {
 
 	@Override
 	public String toString() {
-		return "Solicitud [id=" + id + ", dni=" + dni + ", actividad=" + actividad + ", nombre=" + nombre
+		return "Solicitud [id=" + id + ", dni=" + dni + ", cod_actividad=" + cod_actividad + ", nombre=" + nombre
 				+ ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", email=" + email + ", direccion="
 				+ direccion + ", telefono=" + telefono + ", f_nacimiento=" + f_nacimiento + ", num_sorteo=" + num_sorteo
 				+ ", seleccionado=" + seleccionado + ", pago=" + pago + ", estado=" + estado + "]";

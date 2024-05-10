@@ -218,9 +218,9 @@ public class Actividad {
 	}
 	
 	//Para la lista del select de temas
-	public static String dameJsonTemas(ArrayList<String> temas) {
+	public static String dameJsonCodigo(ArrayList<Integer> codigo) {
         Gson gson = new Gson();
-        return gson.toJson(temas);
+        return gson.toJson(codigo);
     }
 	
 	

@@ -83,14 +83,14 @@ public class DaoActividad {
 		return at;
 	}
 	
-	public ArrayList<String> selectTemas() throws SQLException {
-        ArrayList<String> temas = new ArrayList<>();
-        PreparedStatement ps = con.prepareStatement("SELECT tema FROM actividad");
+	public ArrayList<Integer> selectCodigo() throws SQLException {
+        ArrayList<Integer> codigo = new ArrayList<>();
+        PreparedStatement ps = con.prepareStatement("SELECT cod_actividad FROM actividad");
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            temas.add(rs.getString("tema"));
+            codigo.add(rs.getInt("cod_actividad"));
         }
-        return temas;
+        return codigo;
     }
 
 

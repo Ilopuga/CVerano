@@ -453,3 +453,9 @@ nav-item.opened {
   font-size: 0.8em; 
   margin-top: 10px; 
 }*/
+/*Imagen error, más pequeña y centrada*/
+#error {
+  display: block; /* Mostrar la imagen como un bloque */
+  margin: 0 auto; /* Centrar horizontalmente la imagen */
+  width: 35%; /* Ajustar el ancho de la imagen */
+}

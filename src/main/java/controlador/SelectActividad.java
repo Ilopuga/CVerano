@@ -37,9 +37,10 @@ public class SelectActividad extends HttpServlet {
 
 		try {
             DaoActividad daoActividad = new DaoActividad();
-            ArrayList<String> temas = daoActividad.selectTemas();
-            String json = Actividad.dameJsonTemas(temas);
+            ArrayList<Integer> codigo = daoActividad.selectCodigo();
+            String json = Actividad.dameJsonCodigo(codigo);
 			respuesta.print(json);
+			System.out.println(json);
         } catch (SQLException e) {
             response.sendRedirect("error.html?error=3");
             e.printStackTrace();

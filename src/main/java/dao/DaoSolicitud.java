@@ -35,10 +35,10 @@ public class DaoSolicitud {
 	public void insertar(Solicitud s) throws SQLException {
 		// Solo pongo los campos que rellenarán los usuarios externos
 
-		String sql = "INSERT INTO solicitud (dni,actividad,nombre,apellido1,apellido2,email,direccion,telefono,f_nacimiento) VALUES (?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO solicitud (dni,cod_actividad,nombre,apellido1,apellido2,email,direccion,telefono,f_nacimiento) VALUES (?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, s.getDni());
-		ps.setString(2, s.getActividad());
+		ps.setInt(2, s.getCod_actividad());
 		ps.setString(3, s.getNombre());
 		ps.setString(4, s.getApellido1());
 		ps.setString(5, s.getApellido2());
@@ -63,7 +63,7 @@ public class DaoSolicitud {
 
 		rs.next();
 
-		Solicitud s = new Solicitud(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+		Solicitud s = new Solicitud(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
 				rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getInt(11),
 				rs.getBoolean(12), rs.getBoolean(13), rs.getString(14));
 
@@ -81,7 +81,7 @@ public class DaoSolicitud {
 
 		rs.next();
 
-		Solicitud s = new Solicitud(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+		Solicitud s = new Solicitud(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
 				rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getInt(11),
 				rs.getBoolean(12), rs.getBoolean(13), rs.getString(14));
 
@@ -107,7 +107,7 @@ public class DaoSolicitud {
 			}
 			// solo defino el tipo y la posición pero también puedo poner el nombre, me guía
 			// mejor
-			result.add(new Solicitud(rs.getInt("id"), rs.getString("Dni"), rs.getString("actividad"),
+			result.add(new Solicitud(rs.getInt("id"), rs.getString("Dni"), rs.getInt("cod_actividad"),
 					rs.getString("nombre"), rs.getString("apellido1"), rs.getString("apellido2"), rs.getString("email"),
 					rs.getString("direccion"), rs.getInt("telefono"), rs.getString("f_nacimiento"),
 					rs.getInt("num_sorteo"), rs.getBoolean("seleccionado"), rs.getBoolean("pago"), rs.getString("estado")));
@@ -132,11 +132,11 @@ public class DaoSolicitud {
 
 	public Solicitud actualizar(Solicitud s) throws SQLException {
 
-		String sql = "UPDATE solicitud SET (Dni,actividad,nombre,apellido1,apellido2,email,direccion,telefono,f_nacimiento,num_sorteo,seleccionado,pago,observaciones) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)\" WHERE id = ?";
+		String sql = "UPDATE solicitud SET (Dni,cod_actividad,nombre,apellido1,apellido2,email,direccion,telefono,f_nacimiento,num_sorteo,seleccionado,pago,observaciones) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)\" WHERE id = ?";
 
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, s.getDni());
-		ps.setString(2, s.getActividad());
+		ps.setInt(2, s.getCod_actividad());
 		ps.setString(3, s.getNombre());
 		ps.setString(4, s.getApellido1());
 		ps.setString(5, s.getApellido2());
