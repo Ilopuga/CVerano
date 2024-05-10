@@ -124,7 +124,9 @@ function borrar(cod_actividad) {
   ) {
     fetch("../ListarActividad?cod_actividad=" + cod_actividad + "&op=3")
       .then((response) => response.json())
-      .then((data) => pintarTabla(data))
+      .then((data) => {
+        pintarTabla(data)
+      })
   } else {
     alert("Acción cancelada")
   }

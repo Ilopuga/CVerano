@@ -69,6 +69,7 @@ public class DaoActividad {
 	
 	public Actividad obtenerPorTema(String tema) throws SQLException {
 		//1 paso. conecto y le paso la query directamente. En 2 pasos en obtenerPorCod
+		// Para actividad.html
 		PreparedStatement ps = con.prepareStatement("SELECT * FROM actividad WHERE tema=?");
 		ps.setString(1, tema);
 
@@ -81,13 +82,23 @@ public class DaoActividad {
 
 		return at;
 	}
+	
+	public ArrayList<String> selectTemas() throws SQLException {
+        ArrayList<String> temas = new ArrayList<>();
+        PreparedStatement ps = con.prepareStatement("SELECT tema FROM actividad");
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            temas.add(rs.getString("tema"));
+        }
+        return temas;
+    }
+
 
 
 	// Lo pongo private para dar seguridad. Llamaré al ListarJson
 	private ArrayList<Actividad> listar() throws SQLException {
 		// conecto y le paso la query directamente
 		PreparedStatement ps = con.prepareStatement("SELECT * FROM actividad");
-
 		ResultSet rs = ps.executeQuery();
 
 		// el array que devuelvo
@@ -158,5 +169,21 @@ public class DaoActividad {
 		int filas = ps.executeUpdate();
 		ps.close();
 	}
+	
+	/*public ArrayList<Actividad> listarActividades() throws SQLException {
+    	// Directamente le paso la query
+    	PreparedStatement ps = con.prepareStatement("SELECT cod_actividad, nombreA, tema FROM actividades");
+    	ResultSet rs = ps.executeQuery();
+    	//Array que devuelve
+    	ArrayList<Actividad> actividades = null;
+          while (rs.next()) {
+        	  //inicializar actividades
+        	  if (actividades == null) {
+        		  actividades = new ArrayList<Actividad>();
+        	  }
+                actividades.add(new Actividad(rs.getInt("cod_actividad"), rs.getString("nombreA"), rs.getString("tema")));
+            }
+        return actividades;
+    }*/
 
 }

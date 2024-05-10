@@ -121,7 +121,7 @@ public class GestionActividad extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			// Redirige a add_actividad con un parámetro de error
-			response.sendRedirect("admin/error.html?error=Error al insertar en la base de datos");
+			response.sendRedirect("admin/error.html?error=1");
 		}
 
 	}

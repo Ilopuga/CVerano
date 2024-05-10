@@ -53,7 +53,7 @@ public class GestionAdministrador extends HttpServlet {
 	        DaoAdministrador dao = new DaoAdministrador();
 	        if (dao.usuarioExiste(usuario)) {
 	            // Usuario ya existe, enviar respuesta para alerta
-	            response.setContentType("text/html");
+	            //response.setContentType("text/html");
 		        response.sendRedirect("admin/error.html?error=2");
 
 	        } else {

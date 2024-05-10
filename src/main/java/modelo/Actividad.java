@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
@@ -57,11 +58,10 @@ public class Actividad {
 		this.plazas = plazas;
 	}
 	
-	//Para consulta actividad
-	public Actividad(int cod_actividad, String nombreA) {
+	//Para el Select del formulario solicitud
+	public Actividad(String tema) {
 		super();
-		this.cod_actividad = cod_actividad;
-		this.nombreA = nombreA;
+		this.tema=tema;
 	}
 	
 	//Empiezan los Getters y Setters
@@ -205,6 +205,7 @@ public class Actividad {
 	    
 	}
 	
+	
 	//Reutilizo para recuperar por Cod_actividad y por tema
 	public String dameJson() {
 		String json = "";
@@ -215,6 +216,13 @@ public class Actividad {
 		return json;
 		
 	}
+	
+	//Para la lista del select de temas
+	public static String dameJsonTemas(ArrayList<String> temas) {
+        Gson gson = new Gson();
+        return gson.toJson(temas);
+    }
+	
 	
     public void actualizar() throws SQLException {
         DaoActividad.getInstance().actualizar(this);

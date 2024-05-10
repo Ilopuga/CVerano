@@ -139,4 +139,14 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectActividad</display-name>
+    <servlet-name>SelectActividad</servlet-name>
+    <servlet-class>controlador.SelectActividad</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectActividad</servlet-name>
+    <url-pattern>/SelectActividad</url-pattern>
+  </servlet-mapping>
 </web-app>

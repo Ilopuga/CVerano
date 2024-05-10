@@ -44,7 +44,7 @@ function cargarImagenBdd(imagenBdd) {
 }
 
 function pintarActividad(datos) {
-  //document.getElementById("cod_actividad").textContent = datos.cod_actividad
+  document.getElementById("cod_actividad").textContent = datos.cod_actividad
   document.getElementById("nombreA").textContent = datos.nombreA
   document.getElementById("lugar").textContent = datos.lugar
   document.getElementById("tema").textContent = datos.tema
