@@ -61,6 +61,18 @@ public class Solicitud {
 		this.f_nacimiento = f_nacimiento;
 	}
 	
+	//Otro para el resultado del buscador. Identificativo de solicitud. User externo
+		public Solicitud(int id, String dni, int cod_actividad, String nombre, String email, int telefono, String estado) {
+			super();
+			this.id = id;
+			this.dni = dni;
+			this.cod_actividad = cod_actividad;
+			this.nombre = nombre;
+			this.email = email;
+			this.telefono = telefono;
+			this.estado = estado;
+		}
+	
 
 	public int getId() {
 		return id;
@@ -217,6 +229,24 @@ public class Solicitud {
 	    this.setDireccion(aux.getDireccion());
 	    this.setTelefono(aux.getTelefono());
 	    this.setF_nacimiento(aux.getF_nacimiento());
+	    this.setNum_sorteo(aux.getNum_sorteo());
+	    this.setSeleccionado(aux.isSeleccionado());
+	    this.setPago(aux.isPago());
+	    this.setEstado(aux.getEstado());
+	}
+	
+	public void buscadorDni(String dni) throws SQLException {//para el usuaario
+
+		DaoSolicitud dao = DaoSolicitud.getInstance();
+		Solicitud aux = dao.buscadorDni(dni);
+	    
+	    // Recupero estos datos y los tengo que volver a mandar
+	    this.setId(aux.getId());
+	    this.setDni(aux.getDni());
+	    this.setCod_actividad(aux.getCod_actividad());
+	    this.setNombre(aux.getNombre());
+	    this.setEmail(aux.getEmail());
+	    this.setTelefono(aux.getTelefono());
 	    this.setNum_sorteo(aux.getNum_sorteo());
 	    this.setSeleccionado(aux.isSeleccionado());
 	    this.setPago(aux.isPago());

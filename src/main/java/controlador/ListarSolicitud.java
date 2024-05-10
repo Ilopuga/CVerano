@@ -38,8 +38,9 @@ public class ListarSolicitud extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	}
 		
-		PrintWriter respuesta = response.getWriter();
+		/*PrintWriter respuesta = response.getWriter();
 		
 		int opcion = Integer.parseInt(request.getParameter("op"));
 
@@ -51,7 +52,7 @@ public class ListarSolicitud extends HttpServlet {
 			try {
 				s.obtenerPorId(id);
 				respuesta.print(s.dameJson());
-				System.out.println(s.dameJson());
+				//System.out.println(s.dameJson());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -69,7 +70,7 @@ public class ListarSolicitud extends HttpServlet {
 		
 		
 	
-
+*/
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

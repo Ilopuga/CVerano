@@ -82,10 +82,11 @@ public class GestionSolicitud extends HttpServlet {
                 s = dao.obtenerPorDni(dni);
 
                 // Envio los datos, el json a la web
-                response.setContentType("solicitud_recibida.html");
+                //response.setContentType("solicitud_recibida.html");
                 PrintWriter respuesta = response.getWriter();
                 respuesta.print(s.dameJson());
-                System.out.println(s.dameJson());
+                response.sendRedirect("buscador_solicitud.html");
+
             }
         } catch (SQLException e) {
             e.printStackTrace();

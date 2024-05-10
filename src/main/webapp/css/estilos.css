@@ -459,3 +459,21 @@ nav-item.opened {
   margin: 0 auto; /* Centrar horizontalmente la imagen */
   width: 35%; /* Ajustar el ancho de la imagen */
 }
+
+/* Estilos para el contenedor del buscador */
+.buscador-container {
+  text-align: center; /* Centra los elementos */
+}
+
+/* Estilos para el input */
+.buscador-container input[type="text"] {
+  width: 300px; /* Ancho del input */
+  padding: 10px; /* Espacio interno del input */
+  font-size: 18px; /* Tamaño de la fuente */
+}
+
+/* Estilos para el botón */
+.buscador-container button[type="submit"] {
+  padding: 10px 20px; /* Espacio interno del botón */
+  font-size: 18px; /* Tamaño de la fuente */
+}

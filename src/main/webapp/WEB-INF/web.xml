@@ -149,4 +149,24 @@
     <servlet-name>SelectActividad</servlet-name>
     <url-pattern>/SelectActividad</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BuscadorSolicitud</display-name>
+    <servlet-name>BuscadorSolicitud</servlet-name>
+    <servlet-class>controlador.BuscadorSolicitud</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BuscadorSolicitud</servlet-name>
+    <url-pattern>/BuscadorSolicitud</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BuscarSolicitud</display-name>
+    <servlet-name>BuscarSolicitud</servlet-name>
+    <servlet-class>controlador.BuscarSolicitud</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BuscarSolicitud</servlet-name>
+    <url-pattern>/BuscarSolicitud</url-pattern>
+  </servlet-mapping>
 </web-app>

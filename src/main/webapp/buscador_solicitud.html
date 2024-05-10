@@ -49,9 +49,38 @@
     </div>
   </head>
   <body>
-    <h1>Listado de actividades</h1>
-    <div id="resultados"></div>
-    <script src="js/solicitud.js"></script>
+    <section>
+      <h2>Compruebe el estado de su solicitud</h2>
+      <div class="buscador-container">
+        <form
+          name="BuscarSolicitud"
+          action="buscador_solicitud.html"
+          method="get"
+          enctype="multipart/form-data"
+          id="BuscarSolicitud"
+        >
+          <!--Buscador-->
+          <input type="text" name="dni" placeholder="DNI a buscar" required />
+          <button type="submit" id="buscar">Buscar</button>
+        </form>
+      </div>
+      <section>
+        <div class="actividad-container">
+          <div class="detalle-container">
+            <p><strong>Identificador:</strong><span id="id"></span></p>
+            <p><strong>Nombre:</strong> <span id="nombre"></span></p>
+            <p><strong>DNI:</strong> <span id="dni"></span></p>
+            <p><strong>Código de la actividad seleccionada:</strong> <span id="cod_actividad"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+            <p><strong>Teléfono:</strong> <span id="telefono"></span></p>
+            <p><strong>Número para el sorteo:</strong> <span id="num_sorteo"></span></p>
+            <p><strong>¿Pagado?</strong> <span id="pago"></span></p>
+            <p><strong>¿Está seleccionado?</strong> <span id="seleccionado"></span></p>
+            <p><strong>Estado:</strong> <span id="estado"></span></p>
+          </div>
+        </div>
+      </section>
+    <script src="js/buscador.js"></script>
   </body>
   <footer class="footer">
     <div class="footer-columna">

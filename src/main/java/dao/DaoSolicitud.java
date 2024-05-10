@@ -72,7 +72,7 @@ public class DaoSolicitud {
 	
 	public Solicitud obtenerPorDni(String dni) throws SQLException {
 		// Aquí ya incluyo todos los campos.
-		// Este es para listar el formulario enviado y avisar al usuario
+		// Este es para listar el formulario enviado. Para el ADMIN
 		String sql = "SELECT * FROM solicitud WHERE dni=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, dni);
@@ -86,6 +86,35 @@ public class DaoSolicitud {
 				rs.getBoolean(12), rs.getBoolean(13), rs.getString(14));
 
 		return s;
+	}
+	
+	public Solicitud buscadorDni(String dni) throws SQLException {
+		// Limitado a campos del usuario para comprobar solicitud
+		// Este es para listar el formulario enviado y avisar al usuario
+		String sql = "SELECT id,dni,cod_actividad, nombre, email, telefono, num_sorteo,seleccionado,pago, estado FROM solicitud WHERE dni=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, dni);
+
+		ResultSet rs = ps.executeQuery();
+
+		rs.next();
+        // Crear un nuevo objeto Solicitud pero ahora solo con los datos que necesito
+		Solicitud s = new Solicitud();
+        s.setId(rs.getInt("id"));
+        s.setDni(rs.getString("dni"));
+        s.setCod_actividad(rs.getInt("cod_actividad"));
+        s.setNombre(rs.getString("nombre"));
+        s.setEmail(rs.getString("email"));
+        s.setTelefono(rs.getInt("telefono"));
+        s.setNum_sorteo(rs.getInt("num_sorteo"));
+        s.setSeleccionado(rs.getBoolean("seleccionado"));
+        s.setPago(rs.getBoolean("pago"));
+        s.setEstado(rs.getString("estado"));
+        return s;
+		/*Me recupera todos los campos poruqe me crea un objeto solicitud completo
+		 * Solicitud s = new Solicitud(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
+				rs.getInt(6), rs.getString(7));*/
+
 	}
 
 	// Lo pongo private para dar seguridad. Llamaré al ListarJson
