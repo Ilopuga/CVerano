@@ -160,28 +160,25 @@ public class DaoSolicitud {
 	}
 
 	public Solicitud actualizar(Solicitud s) throws SQLException {
-
-		String sql = "UPDATE solicitud SET (Dni,cod_actividad,nombre,apellido1,apellido2,email,direccion,telefono,f_nacimiento,num_sorteo,seleccionado,pago,observaciones) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)\" WHERE id = ?";
-
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, s.getDni());
-		ps.setInt(2, s.getCod_actividad());
-		ps.setString(3, s.getNombre());
-		ps.setString(4, s.getApellido1());
-		ps.setString(5, s.getApellido2());
-		ps.setString(6, s.getEmail());
-		ps.setString(7, s.getDireccion());
-		ps.setInt(8, s.getTelefono());
-		ps.setString(9, s.getF_nacimiento());
-		ps.setInt(10, s.getNum_sorteo());
-		ps.setBoolean(11, s.isSeleccionado());
-		ps.setBoolean(12, s.isPago());
-		ps.setString(13, s.getEstado());
-		ps.setInt(14, s.getId());// Al final porque es el criterio en el WHERE
-		int result = ps.executeUpdate();
-
-		ps.close();
-		return s;
+	    String sql = "UPDATE solicitud SET dni=?, cod_actividad=?, nombre=?, apellido1=?, apellido2=?, email=?, direccion=?, telefono=?, f_nacimiento=?, num_sorteo=?, seleccionado=?, pago=?, estado=? WHERE id = ?";
+	    PreparedStatement ps = con.prepareStatement(sql);
+	    ps.setString(1, s.getDni());
+	    ps.setInt(2, s.getCod_actividad());
+	    ps.setString(3, s.getNombre());
+	    ps.setString(4, s.getApellido1());
+	    ps.setString(5, s.getApellido2());
+	    ps.setString(6, s.getEmail());
+	    ps.setString(7, s.getDireccion());
+	    ps.setInt(8, s.getTelefono());
+	    ps.setString(9, s.getF_nacimiento());
+	    ps.setInt(10, s.getNum_sorteo());
+	    ps.setBoolean(11, s.isSeleccionado());
+	    ps.setBoolean(12, s.isPago());
+	    ps.setString(13, s.getEstado());
+	    ps.setInt(14, s.getId()); // Al final porque es el criterio en el WHERE
+	    int result = ps.executeUpdate();
+	    ps.close();
+	    return s;
 	}
 	
 	public void borrar(int id) throws SQLException {

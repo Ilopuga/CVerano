@@ -26,15 +26,27 @@ function llamada(dni) {
 }
 
 // Definir la función para pintar los resultados en la página
-function pintarResultados(data) {
-  // Aquí puedes escribir la lógica para pintar los resultados
-  // Por ejemplo, actualizar los elementos HTML con los datos recibidos
-  document.getElementById("nombre").innerText = "Nombre: " + data.nombre
-  document.getElementById("dni").innerText = "DNI: " + data.dni
-  document.getElementById("cod_actividad").innerText = data.cod_actividad
-  document.getElementById("email").innerText = data.email
-  document.getElementById("teléfono").innerText = data.teléfono
-  document.getElementById("estado").innerText = data.estado
+function pintarResultados(datos) {
+  document.getElementById("id").innerText = datos.id
+  document.getElementById("nombre").innerText = datos.nombre
+  document.getElementById("dni").innerText = datos.dni
+  document.getElementById("cod_actividad").innerText = datos.cod_actividad
+  document.getElementById("email").innerText = datos.email
+  document.getElementById("telefono").innerText = datos.telefono
+  //Pregunto si el valor es nulo, indefinido, etc.(falsy) me muestra el texto "alternativo" que le indico
+  //El admin modificará en el futuro y mostrará otra cosa
+  document.getElementById("num_sorteo").innerText = datos.num_sorteo
+    ? +datos.num_sorteo
+    : "No asignado"
+  document.getElementById("pago").innerText = datos.pago
+    ? +datos.pago
+    : "No corresponde"
+  document.getElementById("seleccionado").innerText = datos.seleccionado
+    ? +datos.seleccionado
+    : "Sorteo no realizado"
+  document.getElementById("estado").innerText = datos.estado
+    ? +datos.estado
+    : "Recibida"
 }
 
 // Formulario de solicitud. Recibe el json con el cod_actividad, lo muestra en el select

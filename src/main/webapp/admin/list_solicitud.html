@@ -42,17 +42,17 @@
               </ul>
             </li>
             <li class="menu-item">
-              <a href="#submenu3"
-                ><img
-                  src="img/solicitudes.png"
-                  alt="Solicitudes"
-                />Solicitudes</a
-              >
-              <ul id="submenu3" class="submenu">
-                <li><a href="list_solicitud.html">Gestión</a></li>
-                <li>Buscar</li>
-              </ul>
-            </li>
+                <a href="#submenu3"
+                  ><img
+                    src="img/solicitudes.png"
+                    alt="Solicitudes"
+                  />Solicitudes</a
+                >
+                <ul id="submenu3" class="submenu">
+                  <li><a href="list_solicitud.html">Gestión</a></li>
+                  <li>Buscar</li>
+                </ul>
+              </li>
             <li class="menu-item">
               <a href="#submenu4"
                 ><img src="img/proceso.png" alt="User" />Proceso</a
@@ -81,30 +81,10 @@
     <!--========== CONTENIDO ==========-->
     <main>
       <section>
-        <h1>Añadir administradores</h1>
-        <div class="form-add">
-            <form
-              name="AltaAdmin"
-              action="../GestionAdministrador"
-              method="post"
-              enctype="multipart/form-data" id="AltaAdmin">
-      <ul><input type="hidden" id="id" name="id">
-        <li>
-          <label for="usuario">Usuario:</label>
-          <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario" required/>
-        </li>
-        <li>
-          <label for="pass">Contraseña:</label>
-            <input type="password" name="pass" id="pass" placeholder="Contraseña" required/>
-        </li>
-        <li><input type="submit" id="enviarBoton" value="ENVIAR" /></li>
-      </ul>
-    </form>
-        </div>
+        <h1>Listado de Solicitudes</h1>
+        <div id="resultados"></div>
       </section>
     </main>
-    <script src="js/admin.js"></script>
+    <script src="js/solicitud.js"></script>
   </body>
 </html>
-</html>
-

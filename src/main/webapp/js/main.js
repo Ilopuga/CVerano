@@ -39,9 +39,10 @@ function getParameterByName(name) {
     ? ""
     : decodeURIComponent(results[1].replace(/\+/g, " "))
 }
-
+//Cargo la imagen de la base de datos para mostrarla en el editar. No relleno el campo, solo la muestro
 function cargarImagenBdd(imagenBdd) {
-  document.getElementById("imagenBdd").src = `files/${imagenBdd}`
+  document.getElementById("imagenBdd").src = "files/" + imagenBdd
+  //  document.getElementById("imagenBdd").src = `files/${imagenBdd}`
 }
 
 function pintarActividad(datos) {
@@ -88,6 +89,11 @@ function error() {
       case "3":
         mensajeError.textContent =
           "Error. No se ha podido cargar el listado. Contacte con el administrador."
+        break
+      case "4":
+        mensajeError.textContent =
+          "Error. No existe DNI, este DNI no ha realizado ninguna solicitud."
+        break
       default:
         mensajeError.textContent =
           "Error desconocido. Por favor, contacte con el administrador."

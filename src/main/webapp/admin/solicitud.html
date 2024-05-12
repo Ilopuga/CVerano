@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos_gestion.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Rowdies:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="../img/favico.ico" />
+    <title>Gestión de Campaña de Verano</title>
+  </head>
+  <body>
+    <div class="grid-container">
+      <aside class="sidebar">
+        <nav>
+          <ul class="menu">
+            <li class="menu-item">
+              <a href="#submenu1"
+                ><img src="img/user.png" alt="User" />Usuarios</a
+              >
+              <ul id="submenu1" class="submenu">
+                <li><a href="add_admin.html">Añadir</a></li>
+                <li><a href="list_admin.html">Gestión</a></li>
+                <li>Buscar</li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="#submenu2"
+                ><img
+                  src="img/actividades.png"
+                  alt="Actividades"
+                />Actividades</a
+              >
+              <ul id="submenu2" class="submenu">
+                <li><a href="add_actividad.html">Añadir</a></li>
+                <li><a href="list_actividad.html">Gestión</a></li>
+                <li>Buscar</li>
+              </ul>
+            </li>
+            <li class="menu-item">
+                <a href="#submenu3"
+                  ><img
+                    src="img/solicitudes.png"
+                    alt="Solicitudes"
+                  />Solicitudes</a
+                >
+                <ul id="submenu3" class="submenu">
+                  <li><a href="list_solicitud.html">Gestión</a></li>
+                  <li>Buscar</li>
+                </ul>
+              </li>
+            <li class="menu-item">
+              <a href="#submenu4"
+                ><img src="img/proceso.png" alt="User" />Proceso</a
+              >
+              <ul id="submenu4" class="submenu">
+                <li>Asignar número</li>
+                <li>Realizar sorteo</li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="#submenu5"
+                ><img
+                  src="img/candado.png"
+                  alt="Sesión"
+                />Sesión</a
+              >
+              <ul id="submenu5" class="submenu">
+                <li><span id="usuarioLogueado"></span></li>
+                <a href="../Login?action=logout">Cerrar sesión</a>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    <!--========== CONTENIDO ==========-->
+    <main>
+      <section>
+        <h1>Solicitud</h1>
+        <div class="form-add">
+            <form
+              name="AltaSolicitud"
+              action="../GestionSolicitud?op=2"
+              method="post"
+              enctype="multipart/form-data"
+              id="AltaSolicitud"
+            >
+            <form>
+              <ul>
+                <li>
+                  <label for="id">Identificador:</label>
+                   <input type="text" name="id" id="id"/>
+                </li>
+                <li>
+                  <label for="dni">DNI:</label>
+                  <input
+                    type="text"
+                    name="dni"
+                    id="dni"
+                    placeholder="Ingrese su DNI/NIE"
+                    maxlength="9"
+                    pattern="[XYZ0-9][0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKE]"
+                    required
+                  />
+                </li>
+                <li>
+                    <label for="cod_actividad">Código de actividad:</label>
+                     <input type="text" name="cod_actividad" id="cod_actividad" required />
+                </li>
+                <li>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" required />
+                </li>
+                <li>
+                  <label for="apellido1">Primer apellido:</label>
+                  <input type="text" name="apellido1" id="apellido1" required />
+                </li>
+                <li>
+                  <label for="apellido2">Segundo apellido:</label>
+                  <input type="text" name="apellido2" id="apellido2" />
+                </li>
+                <li>
+                  <label for="email">Email:</label>
+                  <input type="email" name="email" id="email" required />
+                </li>
+                <li>
+                  <label for="direccion">Dirección completa:</label>
+                  <input type="text" name="direccion" id="direccion" />
+                </li>
+                <li>
+                  <label for="telefono">Teléfono:</label>
+                  <input type="number" name="telefono" id="telefono" />
+                </li>
+                <li>
+                  <label for="f_nacimiento">Fecha de nacimiento:</label>
+                  <input
+                    type="text"
+                    name="f_nacimiento"
+                    id="f_nacimiento"
+                    placeholder="DD-MM-AAAA"
+                    pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
+                  />
+                </li>
+                <li>
+                  <label for="num_sorteo">Número para el sorteo:</label>
+                  <input type="number" name="num_sorteo" id="num_sorteo"/>
+                </li>
+                <li>
+                    <label for="seleccionado">¿Está seleccionado?</label>
+                    <input type="text" name="seleccionado" id="seleccionado"/>
+                </li>
+                <li>
+                    <label for="pago">¿Pagado?</label>
+                    <input type="text" name="pago" id="pago"/>
+                </li>
+                <li>
+                    <label for="estado">Estado:</label>
+                    <input type="text" name="estado" id="estado"/>
+                </li>
+                <li><input type="submit" /></li>
+              </ul>
+            </form>
+        </div>
+      </section>
+    </main>
+    <script src="js/solicitud.js"></script>
+  </body>
+</html>
+</html>
+

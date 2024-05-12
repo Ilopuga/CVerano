@@ -45,6 +45,26 @@ public class Solicitud {
 		this.pago = pago;
 		this.estado = estado;
 	}
+	
+	//Otro para el actualizar. SOlo admin
+	public Solicitud(String dni, int cod_actividad, String nombre, String apellido1, String apellido2,
+			String email, String direccion, int telefono, String f_nacimiento, int num_sorteo, boolean seleccionado,
+			boolean pago, String estado) {
+		super();
+		this.dni = dni;
+		this.cod_actividad = cod_actividad;
+		this.nombre = nombre;
+		this.apellido1 = apellido1;
+		this.apellido2 = apellido2;
+		this.email = email;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.f_nacimiento = f_nacimiento;
+		this.num_sorteo = num_sorteo;
+		this.seleccionado = seleccionado;
+		this.pago = pago;
+		this.estado = estado;
+	}
 
 	//Otro sin id para mandar a la BDD. Campos del formulario para usuario externo
 	public Solicitud(String dni, int cod_actividad, String nombre, String apellido1, String apellido2, String email,
@@ -62,7 +82,9 @@ public class Solicitud {
 	}
 	
 	//Otro para el resultado del buscador. Identificativo de solicitud. User externo
-		public Solicitud(int id, String dni, int cod_actividad, String nombre, String email, int telefono, String estado) {
+		public Solicitud(int id, String dni, int cod_actividad, String nombre,
+				String email, int telefono, int num_sorteo, boolean pago,
+				boolean seleccionado, String estado) {
 			super();
 			this.id = id;
 			this.dni = dni;
@@ -70,6 +92,9 @@ public class Solicitud {
 			this.nombre = nombre;
 			this.email = email;
 			this.telefono = telefono;
+			this.num_sorteo = num_sorteo;
+			this.pago = pago;
+			this.seleccionado = seleccionado;
 			this.estado = estado;
 		}
 	

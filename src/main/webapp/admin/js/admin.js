@@ -76,8 +76,9 @@ function pintarResultados(datos) {
   }
 }
 
+//Editar admin
 function llamadaEd(id, op) {
-  fetch(`../ListarAdministrador?id=${id}&op=${op}`)
+  fetch("../ListarAdministrador?id=" + id + "&op=" + op)
     .then((response) => response.json())
     .then((data) => pintarFormulario(data))
 }

@@ -81,20 +81,6 @@ public class Administrador {
 
 	}
 
-	public boolean logueo(String pass) throws SQLException {
-
-		boolean ok = false;
-
-		DaoAdministrador dao = DaoAdministrador.getInstance();
-		Administrador aux = dao.logueando(this, pass);
-
-		if (aux != null) {
-			ok = true;
-			this.setId(aux.getId());
-			this.setUsuario(aux.getUsuario());
-		}
-		return ok;
-	}
 
 	public String dameJson() {
 		String json = "";
@@ -112,6 +98,21 @@ public class Administrador {
 
 	public void borrar(int id) throws SQLException {
 		DaoAdministrador.getInstance().borrar(id);
+	}
+	
+	public boolean logueo(String pass) throws SQLException {
+
+		boolean ok = false;
+
+		DaoAdministrador dao = DaoAdministrador.getInstance();
+		Administrador aux = dao.logueando(this, pass);
+
+		if (aux != null) {
+			ok = true;
+			this.setId(aux.getId());
+			this.setUsuario(aux.getUsuario());
+		}
+		return ok;
 	}
 	
 	public static String myMD5(String pass) {

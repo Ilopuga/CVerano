@@ -169,4 +169,14 @@
     <servlet-name>BuscarSolicitud</servlet-name>
     <url-pattern>/BuscarSolicitud</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListaSolicitud</display-name>
+    <servlet-name>ListaSolicitud</servlet-name>
+    <servlet-class>controlador.ListaSolicitud</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListaSolicitud</servlet-name>
+    <url-pattern>/ListaSolicitud</url-pattern>
+  </servlet-mapping>
 </web-app>

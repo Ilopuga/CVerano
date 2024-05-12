@@ -50,74 +50,81 @@
     </div>
   </head>
   <body>
-    <div class="form-add">
-      <h2>Formulario de solicitud</h2>
-      <form
-        name="AltaSolicitud"
-        action="GestionSolicitud"
-        method="post"
-        enctype="multipart/form-data"
-        id="AltaSolicitud"
-      >
-        <ul>
-          <li>
-            <label for="dni">DNI:</label>
-            <input
-              type="text"
-              name="dni"
-              id="dni"
-              placeholder="Ingrese su DNI/NIE"
-              maxlength="9"
-              pattern="[XYZ0-9][0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKE]"
-              required
-            />
-          </li>
-          <li>
-            <label for="cod_actividad">Código de actividad:</label>
-            <select id="actividadSelect"></select>
-            <input
-              type="hidden"
-              id="cod_actividad"
-              name="cod_actividad"
-              required
-            />
-          </li>
-          <label for="nombre">Nombre:</label>
-          <input type="text" name="nombre" id="nombre" required />
-          <li>
-            <label for="apellido1">Primer apellido:</label>
-            <input type="text" name="apellido1" id="apellido1" required />
-          </li>
-          <li>
-            <label for="apellido2">Segundo apellido:</label>
-            <input type="text" name="apellido2" id="apellido2" />
-          </li>
-          <li>
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required />
-          </li>
-          <li>
-            <label for="direccion">Dirección completa:</label>
-            <input type="text" name="direccion" id="direccion" />
-          </li>
-          <li>
-            <label for="telefono">Teléfono:</label>
-            <input type="number" name="telefono" id="telefono" />
-          </li>
-          <li>
-            <label for="f_nacimiento">Fecha de nacimiento:</label>
-            <input
-              type="text"
-              name="f_nacimiento"
-              id="f_nacimiento"
-              placeholder="DD-MM-AAAA"
-              pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
-              required
-            />
-          </li>
-          <li><input type="submit" /></li>
-        </ul>
-      </form>
+    <div class="contenedor-general">
+      <div class="form-add">
+        <h2>¿Quieres comprobar el estado de tu solicitud?</h2>
+        <a href="buscador_solicitud.html">Consulta aquí</a>
+      </div>
+
+      <div class="form-add">
+        <h2>Formulario de solicitud</h2>
+        <form
+          name="AltaSolicitud"
+          action="GestionSolicitud?op=1"
+          method="post"
+          enctype="multipart/form-data"
+          id="AltaSolicitud"
+        >
+          <ul>
+            <li>
+              <label for="dni">DNI:</label>
+              <input
+                type="text"
+                name="dni"
+                id="dni"
+                placeholder="Ingrese su DNI/NIE"
+                maxlength="9"
+                pattern="[XYZ0-9][0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKE]"
+                required
+              />
+            </li>
+            <li>
+              <label for="cod_actividad">Código de actividad:</label>
+              <select id="actividadSelect"></select>
+              <input
+                type="hidden"
+                id="cod_actividad"
+                name="cod_actividad"
+                required
+              />
+            </li>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" required />
+            <li>
+              <label for="apellido1">Primer apellido:</label>
+              <input type="text" name="apellido1" id="apellido1" required />
+            </li>
+            <li>
+              <label for="apellido2">Segundo apellido:</label>
+              <input type="text" name="apellido2" id="apellido2" />
+            </li>
+            <li>
+              <label for="email">Email:</label>
+              <input type="email" name="email" id="email" required />
+            </li>
+            <li>
+              <label for="direccion">Dirección completa:</label>
+              <input type="text" name="direccion" id="direccion" />
+            </li>
+            <li>
+              <label for="telefono">Teléfono:</label>
+              <input type="number" name="telefono" id="telefono" />
+            </li>
+            <li>
+              <label for="f_nacimiento">Fecha de nacimiento:</label>
+              <input
+                type="text"
+                name="f_nacimiento"
+                id="f_nacimiento"
+                placeholder="DD-MM-AAAA"
+                pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
+                required
+              />
+            </li>
+            <li><input type="submit" /></li>
+          </ul>
+        </form>
+      </div>
     </div>
     <script src="js/solicitud.js"></script>
   </body>

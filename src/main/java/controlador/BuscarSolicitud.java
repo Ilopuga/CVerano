@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import modelo.Actividad;
 import modelo.Solicitud;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import dao.DaoActividad;
 import dao.DaoSolicitud;
 
 /**
@@ -40,19 +42,36 @@ public class BuscarSolicitud extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String dni = request.getParameter("dni");
+
 		PrintWriter respuesta = response.getWriter();
 
-		Solicitud s = new Solicitud();
+		String dni = request.getParameter("dni");
+		DaoSolicitud dao;
 		try {
-			s.buscadorDni(dni);
-			response.setContentType("application/json"); // Configura el tipo de contenido de la respuesta
-			respuesta.print(s.dameJson());
-			System.out.println(s.dameJson()); // Comprobar que me llega desde la Bdd. Siguiente HTML
+			dao = new DaoSolicitud();
+			if (dao.dniExiste(dni)) {
+				// Json de ese registro
+				Solicitud s = new Solicitud();
+				try {
+					s.obtenerPorDni(dni);
+					respuesta.print(s.dameJson());
+					System.out.println(s.dameJson());// Comprobar que me llega desde la Bdd. Siguiente HTML
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					response.sendRedirect("/Verano/error.html");
+				}
+			} else {
+				response.sendRedirect("/Verano/error.html?error=4");
+
+			}
 		} catch (SQLException e) {
-			respuesta.print("error.html"); 
-			e.printStackTrace(); 
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			response.sendRedirect("/Verano/error.html");
+
 		}
+
 	}
 
 	/**
@@ -66,4 +85,3 @@ public class BuscarSolicitud extends HttpServlet {
 	}
 
 }
-
