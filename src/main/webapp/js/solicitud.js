@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
   iniciarCarrusel()
 
   // Obtener referencia al botón de búsqueda por su ID
-  const buscarBtn = document.getElementById("buscarBtn")
+  const buscar = document.getElementById("buscar")
 
   // Agregar un evento de clic al botón de búsqueda
-  buscarBtn.addEventListener("click", function (event) {
+  buscar.addEventListener("click", function (event) {
     // Evitar que el formulario se envíe automáticamente
     event.preventDefault()
 

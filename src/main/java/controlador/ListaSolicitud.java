@@ -56,7 +56,7 @@ public class ListaSolicitud extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (opcion == 1) {
-			// solo para listar la tabla, todos los registro de la tbla actividad
+			// solo para listar la tabla, todos los registro de la tabla
 			try {
 				String respuestaJson = DaoSolicitud.getInstance().listarJson();
 				respuesta.print(respuestaJson);
