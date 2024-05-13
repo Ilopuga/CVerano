@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Rowdies:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/x-icon" href="../img/favico.ico" />
     <title>Gestión de Campaña de Verano</title>
   </head>
   <body>
@@ -66,14 +67,27 @@
           </ul>
         </nav>
       </aside>
-
-    <!--========== CONTENIDO ==========-->
-    <main>
-      <section>
-        <h1>Listado de actividades</h1>
-        <div id="resultados"></div>
-      </section>
-    </main>
-    <script src="js/main.js"></script>
+      <main>
+        <section>
+          <h1>Bienvenido al panel de procesos</h1>
+          <div class="contenedor-botoneras">
+            <div class="botoneras">
+              <p>Asignar número</p>
+              <img
+                src="img/numeros.png"
+                alt="Asignar números"
+                id="asignarNumero"
+              />
+            </div>
+            <div class="botoneras">
+              <p>Realizar sorteo</p>
+              <img src="img/sorteo.png" alt="Sorteo" id="realizarSorteo" />
+              <p>Número aleatorio: <span id="numeroAleatorio"></span></p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="js/procesos.js"></script>
   </body>
 </html>

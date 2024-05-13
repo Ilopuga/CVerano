@@ -199,6 +199,24 @@ public class DaoSolicitud {
 	    return rs.getInt(1) > 0;  // Verifica si hay al menos un registro
 	}
 	
+	public void asignarNumeros() throws SQLException {
+        // Obtener todas las solicitudes ordenadas por id
+		String sql =  "SELECT id FROM solicitud ORDER BY id";
+		PreparedStatement ps = con.prepareStatement(sql);
+	    ResultSet rs = ps.executeQuery();
+
+
+        // Actualizar el campo num_sorteo con un número creciente
+        int contador = 1;
+        while (rs.next()) {
+            String sqlUpdate = "UPDATE solicitud SET num_sorteo = ? WHERE id = ?";
+            PreparedStatement updateStatement = con.prepareStatement(sqlUpdate);
+            updateStatement.setInt(1, contador);
+            updateStatement.setInt(2, rs.getInt("id"));
+            updateStatement.executeUpdate();
+            contador++;
+        }
+    }
+}
 
     
-}

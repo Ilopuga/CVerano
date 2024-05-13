@@ -1,22 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Verifica si hay parámetros de usuario en la URL
-  let usuario = getParameterByName("usuario")
-  if (usuario) {
-    sessionStorage.setItem("usuario", usuario) // Guarda el nombre del usuario en sessionStorage
-  }
-
-  mostrarUsuarioLogueado()
   gestionarActividades()
   error()
 })
-
-function mostrarUsuarioLogueado() {
-  let usuario = sessionStorage.getItem("usuario")
-  let usuarioDisplay = document.getElementById("usuarioLogueado")
-  if (usuario && usuarioDisplay) {
-    usuarioDisplay.textContent = "Nombre usuario: " + usuario
-  }
-}
 
 function gestionarActividades() {
   llamada() // Llama a cargar la tabla de administradores
@@ -178,16 +163,6 @@ function validarFormulario() {
 
   // Todo true, enviar el formulario
   document.getElementById("AltaActividad").submit()
-}
-
-function mostrarUsuarioLogueado() {
-  let usuario = sessionStorage.getItem("usuario")
-  if (usuario) {
-    let usuarioDisplay = document.getElementById("usuarioLogueado")
-    if (usuarioDisplay) {
-      usuarioDisplay.textContent = "Nombre usuario: " + usuario
-    }
-  }
 }
 
 // Obtener el mensaje de error de la URL

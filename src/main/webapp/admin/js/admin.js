@@ -1,23 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Verifica si hay parámetros de usuario en la URL
-  let usuario = getParameterByName("usuario")
-  if (usuario) {
-    sessionStorage.setItem("usuario", usuario) // Guarda el nombre del usuario en sessionStorage
-  }
-
-  mostrarUsuarioLogueado()
   gestionarAdministradores()
 })
-
-function mostrarUsuarioLogueado() {
-  let usuario = sessionStorage.getItem("usuario")
-  if (usuario) {
-    let usuarioDisplay = document.getElementById("usuarioLogueado")
-    if (usuarioDisplay) {
-      usuarioDisplay.textContent = "Nombre usuario: " + usuario
-    }
-  }
-}
 
 //Función para otener el valor de un parametro en el GET. Expresiones regulares
 function getParameterByName(name) {

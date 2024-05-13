@@ -25,7 +25,7 @@ function llamada(dni) {
     .then((data) => pintarResultados(data))
 }
 
-// Definir la función para pintar los resultados en la página
+/*// Definir la función para pintar los resultados en la página
 function pintarResultados(datos) {
   document.getElementById("id").innerText = datos.id
   document.getElementById("nombre").innerText = datos.nombre
@@ -47,7 +47,7 @@ function pintarResultados(datos) {
   document.getElementById("estado").innerText = datos.estado
     ? +datos.estado
     : "Recibida"
-}
+}*/
 
 // Formulario de solicitud. Recibe el json con el cod_actividad, lo muestra en el select
 // y lo asigna al campo de entrada cod_actividad

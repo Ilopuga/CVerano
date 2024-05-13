@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter("/admin/*")
+@WebFilter("/admin/*")//limita las conexiones a esta url= todo lo que está en la carpeta
 public class Filtro implements Filter {
 
     @Override
@@ -19,7 +19,7 @@ public class Filtro implements Filter {
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        HttpSession session = req.getSession(false); // Obtén la sesión sin crear una nueva.
+        HttpSession session = req.getSession(false); // Pregunto por la sesión
 
         if (session != null && session.getAttribute("usuario") != null) {
             chain.doFilter(request, response); // Usuario autenticado, permite el acceso.
@@ -28,8 +28,8 @@ public class Filtro implements Filter {
         }
     }
 
-    @Override
+    /*@Override
     public void destroy() {
         // Limpiar recursos si es necesario.
-    }
+    }*/
 }

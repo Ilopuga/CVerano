@@ -179,4 +179,14 @@
     <servlet-name>ListaSolicitud</servlet-name>
     <url-pattern>/ListaSolicitud</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AsignarNumero</display-name>
+    <servlet-name>AsignarNumero</servlet-name>
+    <servlet-class>controlador.AsignarNumero</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AsignarNumero</servlet-name>
+    <url-pattern>/AsignarNumero</url-pattern>
+  </servlet-mapping>
 </web-app>

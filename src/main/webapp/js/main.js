@@ -59,14 +59,14 @@ function pintarActividad(datos) {
   document.getElementById("plazas").textContent = datos.plazas
 }
 
-//error del login. Busca error=true en la URL, sis e encuentra, muestra el error en casa campo
+//error del login. Busca error=true (servlet login) en la URL, si se encuentra, muestra el error en casa campo
 function ErrorLogin() {
   if (new URLSearchParams(window.location.search).get("error") === "true") {
     const campoUsuario = document.getElementById("usuario")
     const campoPass = document.getElementById("password")
     campoUsuario.placeholder = "Usuario incorrecto"
     campoPass.placeholder = "Contraseña incorrecta"
-    campoUsuario.classList.add("error-input") // Añade clase de error para reconocer el campo. CSS
+    campoUsuario.classList.add("error-input") // Añade clase error-input para reconocer el campo. CSS
     campoPass.classList.add("error-input")
   }
 }
