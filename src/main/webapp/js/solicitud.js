@@ -64,6 +64,7 @@ fetch("SelectActividad")
     // Itera sobre los elementos del json para crear opciones en el select
     json.forEach((optionText) => {
       // Agrega una opción al select para cada elemento del json
+      //*****************************************************qQUITAR ~~~~$$$$$$$ */
       select.innerHTML += `<option value="${optionText}">${optionText}</option>`
     })
 

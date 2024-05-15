@@ -87,7 +87,8 @@ public class DaoSolicitud {
 
 		return s;
 	}
-	
+	//Creo que no lo uso finalmetne
+	/*
 	public Solicitud buscadorDni(String dni) throws SQLException {
 		// Limitado a campos del usuario para comprobar solicitud
 		// Este es para listar el formulario enviado y avisar al usuario
@@ -110,12 +111,12 @@ public class DaoSolicitud {
         s.setSeleccionado(rs.getBoolean("seleccionado"));
         s.setPago(rs.getBoolean("pago"));
         s.setEstado(rs.getString("estado"));
-        return s;
+        return s;*/
 		/*Me recupera todos los campos poruqe me crea un objeto solicitud completo
 		 * Solicitud s = new Solicitud(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
 				rs.getInt(6), rs.getString(7));*/
-
-	}
+/*
+	}*/
 
 	// Lo pongo private para dar seguridad. Llamaré al ListarJson
 	private ArrayList<Solicitud> listar() throws SQLException {
