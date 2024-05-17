@@ -11,18 +11,31 @@ import com.google.gson.Gson;
 
 import modelo.Solicitud;
 
+/**
+ * Clase DAO para manejar las operaciones de base de datos para la entidad Solicitud.
+ * Implementa el patrón Singleton para asegurar una única instancia de la conexión a la base de datos.
+ */
 public class DaoSolicitud {
 
 	public static Connection con = null;
 	// Singelton
 	private static DaoSolicitud instance = null;
-
+	
+	/**
+     * Constructor que inicializa la conexión a la base de datos.
+     * @throws SQLException Si no puede establecer una conexión con la base de datos.
+     */
 	public DaoSolicitud() throws SQLException {
 
 		this.con = DBConexion.getConexion();
 
 	}
-
+	
+	/**
+     * Obtiene la única instancia de DaoSolicitud.
+     * @return Instancia única de DaoSolicitud.
+     * @throws SQLException Si ocurre un error al obtener la conexión a la base de datos.
+     */
 	// Singelton
 	public static DaoSolicitud getInstance() throws SQLException {
 		if (instance == null) {
@@ -32,6 +45,12 @@ public class DaoSolicitud {
 
 	}
 
+	/**
+     * Inserta una nueva solicitud en la base de datos.
+     * @param s Solicitud a insertar.
+     * @throws SQLException Si ocurre un error durante la inserción de datos.
+     */
+	//Pertenece al formulario para usuarios externos. Limitado en campos
 	public void insertar(Solicitud s) throws SQLException {
 		// Solo pongo los campos que rellenarán los usuarios externos
 
@@ -51,7 +70,13 @@ public class DaoSolicitud {
 		ps.close();
 
 	}
-
+	
+	/**
+     * Obtiene una solicitud por su ID.
+     * @param id ID de la solicitud a buscar.
+     * @return Solicitud encontrada.
+     * @throws SQLException Si ocurre un error durante la consulta.
+     */
 	public Solicitud obtenerPorId(int id) throws SQLException {
 		// Aquí ya incluyo todos los campos. No solo los añadidos por el usuario externo
 		// Para recuperar y modificar el admin
@@ -70,9 +95,17 @@ public class DaoSolicitud {
 		return s;
 	}
 	
+	/**
+     * Obtiene una solicitud por DNI.
+     * Este método es utilizado principalmente para administración y gestión de solicitudes individuales.
+     * @param dni DNI del solicitante.
+     * @return Solicitud correspondiente al DNI proporcionado.
+     * @throws SQLException Si ocurre un error durante la consulta.
+     */
 	public Solicitud obtenerPorDni(String dni) throws SQLException {
 		// Aquí ya incluyo todos los campos.
-		// Este es para listar el formulario enviado. Para el ADMIN
+		// Este es para listar el formulario enviado
+		// O la consulta de estadoc de solicitud de buscador_solicitud.html
 		String sql = "SELECT * FROM solicitud WHERE dni=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, dni);
@@ -147,7 +180,12 @@ public class DaoSolicitud {
 		return result;
 
 	}
-
+	
+	/**
+     * Serializa y devuelve en formato JSON la lista de todas las solicitudes.
+     * @return Una cadena JSON que representa la lista de todas las solicitudes.
+     * @throws SQLException Si ocurre un error durante la consulta o la serialización a JSON.
+     */
 	public String listarJson() throws SQLException {
 		// Meto en json lo que me devuelve del método listar
 		String json = "";
@@ -159,7 +197,13 @@ public class DaoSolicitud {
 		return json;
 
 	}
-
+	
+	/**
+     * Actualiza los detalles de una solicitud en la base de datos.
+     * @param s Solicitud con los detalles actualizados.
+     * @return Solicitud actualizada.
+     * @throws SQLException Si ocurre un error durante la actualización.
+     */
 	public Solicitud actualizar(Solicitud s) throws SQLException {
 	    String sql = "UPDATE solicitud SET dni=?, cod_actividad=?, nombre=?, apellido1=?, apellido2=?, email=?, direccion=?, telefono=?, f_nacimiento=?, num_sorteo=?, seleccionado=?, pago=?, estado=? WHERE id = ?";
 	    PreparedStatement ps = con.prepareStatement(sql);
@@ -182,6 +226,11 @@ public class DaoSolicitud {
 	    return s;
 	}
 	
+	/**
+     * Elimina una solicitud de la base de datos utilizando su ID como identificador.
+     * @param id ID de la solicitud a eliminar.
+     * @throws SQLException Si ocurre un error durante el proceso de eliminación.
+     */
 	public void borrar(int id) throws SQLException {
 
 		String sql = "DELETE FROM solicitud WHERE id=?";
@@ -191,6 +240,19 @@ public class DaoSolicitud {
 		ps.close();
 	}
 	
+	/**
+	 * Verifica si existe una solicitud con el DNI dado.
+	 * Este método consulta para determinar si hay alguna solicitud asociada con el DNI dado.
+	 * @param dni DNI a verificar.
+	 * @return 
+	 * <ul>
+	 *     <li>true: si existe una solicitud con ese DNI.</li>
+	 *     <li>false: si no existe ninguna solicitud con ese DNI.</li>
+	 * </ul>
+	 * @throws SQLException Si ocurre un error durante la consulta.
+	 */
+	//En el formulario solcititu del user externo.
+	//Para eitar duplicados
 	public boolean dniExiste(String dni) throws SQLException {
 	    String sql = "SELECT COUNT(*) FROM solicitud WHERE dni=?";
 	    PreparedStatement ps = con.prepareStatement(sql);
@@ -200,14 +262,21 @@ public class DaoSolicitud {
 	    return rs.getInt(1) > 0;  // Verifica si hay al menos un registro
 	}
 	
+	/**
+     * Asigna números de sorteo secuenciales a todas las solicitudes, ordenadas por ID.
+     * Este método es utilizado para gestionar el proceso de selección basado en sorteos.
+     * @throws SQLException Si ocurre un error durante la actualización de los datos.
+     */
+	//Una vez controlados por el admin las solictudes recibidas, para un proceso justo
+	//Asignamos número según concurrencia
 	public void asignarNumeros() throws SQLException {
-        // Obtener todas las solicitudes ordenadas por id
+        // Obtener todas las solicitudes ordenadas por id y ordenadas =
 		String sql =  "SELECT id FROM solicitud ORDER BY id";
 		PreparedStatement ps = con.prepareStatement(sql);
 	    ResultSet rs = ps.executeQuery();
 
 
-        // Actualizar el campo num_sorteo con un número creciente
+        // Actualizar el campo num_sorteo con un número correlativo
         int contador = 1;
         while (rs.next()) {
             String sqlUpdate = "UPDATE solicitud SET num_sorteo = ? WHERE id = ?";

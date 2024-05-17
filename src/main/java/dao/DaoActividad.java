@@ -10,18 +10,31 @@ import com.google.gson.Gson;
 
 import modelo.Actividad;
 
+/**
+ * Clase DAO para manejar las operaciones de base de datos relacionadas con las entidades de tipo {@link Actividad}.
+ * Utiliza el patrón Singleton para asegurar una única instancia de conexión y acceso a la base de datos.
+ */
 public class DaoActividad {
 
 	public static Connection con = null;
 	// Singelton
 	private static DaoActividad instance = null;
-
+	
+	/**
+     * Constructor privado que inicializa la conexión a la base de datos.
+     * @throws SQLException Si no puede establecer una conexión con la base de datos.
+     */
 	public DaoActividad() throws SQLException {
 
 		this.con = DBConexion.getConexion();
 
 	}
 
+	/**
+     * Método para obtener la instancia única de DaoActividad.
+     * @return Instancia única de DaoActividad.
+     * @throws SQLException Si ocurre un error al crear la instancia o al obtener la conexión.
+     */
 	// Singelton
 	public static DaoActividad getInstance() throws SQLException {
 		if (instance == null) {
@@ -30,7 +43,12 @@ public class DaoActividad {
 		return instance;
 
 	}
-
+	
+	/**
+     * Inserta una nueva actividad en la base de datos.
+     * @param a Actividad a insertar.
+     * @throws SQLException Si ocurre un error durante la inserción de datos.
+     */
 	public void insertar(Actividad a) throws SQLException {
 		// Inserto en la bdd con esas variables y luego hago la conexión con esa query
 		String sql = "INSERT INTO actividad (nombreA,lugar,tema,descripcion,imagen,f_inicio,f_fin,e_min,e_max,plazas) VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -50,7 +68,13 @@ public class DaoActividad {
 		ps.close();
 
 	}
-
+	
+	/**
+     * Obtiene una actividad por el código de actividad.
+     * @param cod_actividad El código de la actividad a buscar.
+     * @return Actividad encontrada.
+     * @throws SQLException Si ocurre un error durante la consulta.
+     */
 	public Actividad obtenerPorCod_actividad(int cod_actividad) throws SQLException {
 
 		String sql = "SELECT * FROM actividad WHERE cod_actividad=?";
@@ -67,9 +91,15 @@ public class DaoActividad {
 		return a;
 	}
 	
+	/**
+     * Obtiene actividades por el tema seleccionado.
+     * @param tema Tema de la actividad a buscar.
+     * @return Actividad encontrada.
+     * @throws SQLException Si ocurre un error durante la consulta.
+     */
 	public Actividad obtenerPorTema(String tema) throws SQLException {
-		//1 paso. conecto y le paso la query directamente. En 2 pasos en obtenerPorCod
-		// Para actividad.html
+		//1 paso. conecto y le paso la query directamente
+		// Para actividad.html, me viene por enlace
 		PreparedStatement ps = con.prepareStatement("SELECT * FROM actividad WHERE tema=?");
 		ps.setString(1, tema);
 
@@ -83,6 +113,12 @@ public class DaoActividad {
 		return at;
 	}
 	
+	/**
+     * Devuelve todos los códigos de actividad de la base de datos.
+     * @return Lista de códigos de actividades.
+     * @throws SQLException Si ocurre un error durante la consulta.
+     */
+	//Lista para el select de cod_actividad del formulario
 	public ArrayList<Integer> selectCodigo() throws SQLException {
         ArrayList<Integer> codigo = new ArrayList<>();
         PreparedStatement ps = con.prepareStatement("SELECT cod_actividad FROM actividad");
@@ -94,7 +130,7 @@ public class DaoActividad {
     }
 
 
-
+	//Lista todas las actividades disponibles, para la tabla
 	// Lo pongo private para dar seguridad. Llamaré al ListarJson
 	private ArrayList<Actividad> listar() throws SQLException {
 		// conecto y le paso la query directamente
@@ -123,7 +159,11 @@ public class DaoActividad {
 
 	}
 
-
+	/**
+     * Lista todas las actividades disponibles en la base de datos y las devuelve en formato JSON.
+     * @return Una cadena JSON que representa la lista de todas las actividades.
+     * @throws SQLException Si ocurre un error al recuperar los datos o al convertirlos a JSON.
+     */
 	public String listarJson() throws SQLException {
 		// Meto en json lo que me devuelve del método listar
 		String json = "";
@@ -137,7 +177,12 @@ public class DaoActividad {
 	}
 	
 
-
+	/**
+     * Actualiza los detalles de una actividad en la base de datos.
+     * @param a Actividad con los detalles actualizados.
+     * @return Actividad actualizada.
+     * @throws SQLException Si ocurre un error durante la actualización.
+     */
 	public Actividad actualizar(Actividad a) throws SQLException {
 
 		String sql = "UPDATE actividad SET nombreA = ?, lugar = ?, tema = ?, descripcion = ?, imagen = ?, f_inicio = ?, f_fin = ?, e_min = ?, e_max = ?, plazas = ? WHERE cod_actividad = ?";
@@ -160,7 +205,12 @@ public class DaoActividad {
 		ps.close();
 		return a;
 	}
-
+	
+	/**
+     * Elimina una actividad de la base de datos utilizando su código de actividad como identificador.
+     * @param cod_actividad Código de la actividad a eliminar.
+     * @throws SQLException Si ocurre un error durante el proceso de eliminación.
+     */
 	public void borrar(int cod_actividad) throws SQLException {
 
 		String sql = "DELETE FROM actividad WHERE cod_actividad=?";
