@@ -36,9 +36,10 @@ public class AsignarNumero extends HttpServlet {
 
 			dao.asignarNumeros();
 			response.getWriter().println("Números asignados correctamente.");
+			response.sendRedirect("admin/list_solicitud.html");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			response.sendRedirect("/Verano/error.html");
+			response.sendRedirect("admin/error.html");
 		}
 	}	
 

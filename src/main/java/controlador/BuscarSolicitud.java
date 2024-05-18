@@ -60,10 +60,10 @@ public class BuscarSolicitud extends HttpServlet {
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					response.sendRedirect("/Verano/error.html");
+					response.sendRedirect("/error.html");
 				}
 			} else {
-				response.sendRedirect("/Verano/error.html?error=4");
+				response.sendRedirect("/error.html?error=4");
 
 			}
 		} catch (SQLException e) {

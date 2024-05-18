@@ -74,6 +74,8 @@ public class ListarActividad extends HttpServlet {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+	            response.sendRedirect("admin/error.html");
+
 			}
 		}
 	}

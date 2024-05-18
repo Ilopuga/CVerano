@@ -454,4 +454,48 @@ nav-item.opened {
   cursor: pointer;
 }
 
+/* Estilos para los comentarios del inicio */
+.contenedor-comentarios {
+  display: flex; 
+  justify-content: space-around; /* Distribuye el espacio alrededor de cada caja */
+  align-items: center; /* Alinea las cajas verticalmente al centro */
+  padding: 20px;
+  max-width: 1000px; /* Ajusta según el ancho máximo deseado */
+  margin: 20px auto; /* Centra el contenedor en la página y añade margen vertical */
+}
 
+.comentario {
+  background-color: #ffffff; /* Fondo blanco para cada comentario */
+  border: 1px solid #ccc; /* Borde sutil */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 20px; /* Espacio interno mayor para mejor lectura */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra más prominente para profundidad */
+  width: 27%; /* Ajusta esto según el tamaño deseado para cada caja */
+  margin: 10px;
+
+}
+
+#Cprincipal {
+  width: 36%; /* Hace que la caja central sea más ancha */
+  background-color: #45b3b6; /* Un fondo diferente para destacar */
+  padding: 30px; /* Mayor espacio interno */
+  font-weight: bold; /* Texto más pesado para destacar */
+}
+
+.autor {
+  color: #555; /* Color del texto para el autor */
+  font-size: 0.9em; /* Un poco más pequeño que el texto del comentario */
+  font-style: italic; /* Estilo cursiva para diferenciar */
+  text-align: right; /* Alinea el texto del autor a la derecha */
+}
+
+@media (max-width: 768px) {
+  .contenedor-comentarios {
+    flex-direction: column; /* Cambia a una disposición en columna para pantallas pequeñas */
+  }
+  
+  .comentario, #Cprincipal {
+    width: 100%; /* Hace que cada caja ocupe el ancho completo en pantallas pequeñas */
+    margin: 10px 0; /* Ajusta el margen para separar verticalmente las cajas */
+  }
+}
