@@ -9,11 +9,15 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
+import modelo.Actividad;
 import modelo.Solicitud;
 
 /**
- * Clase DAO para manejar las operaciones de base de datos para la entidad Solicitud.
+ * Clase DAO para manejar las operaciones de la base de datos relacionadas con las entidades de tipo {@link Solicitud}
  * Implementa el patrón Singleton para asegurar una única instancia de la conexión a la base de datos.
+ * @author Inma López Ugalde
+ * @version 15/05/2024
+ * @see <a href="http://IP...">Aplicación</a>
  */
 public class DaoSolicitud {
 
@@ -54,7 +58,7 @@ public class DaoSolicitud {
 	public void insertar(Solicitud s) throws SQLException {
 		// Solo pongo los campos que rellenarán los usuarios externos
 
-		String sql = "INSERT INTO solicitud (dni,cod_actividad,nombre,apellido1,apellido2,email,direccion,telefono,f_nacimiento) VALUES (?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO solicitud (dni,cod_actividad,nombre,apellido1,apellido2,email,direccion,telefono,f_nacimiento, estado, edicion) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, s.getDni());
 		ps.setInt(2, s.getCod_actividad());
@@ -65,6 +69,9 @@ public class DaoSolicitud {
 		ps.setString(7, s.getDireccion());
 		ps.setInt(8, s.getTelefono());
 		ps.setString(9, s.getF_nacimiento());
+		//No se si correcto. Predefino yo los valores
+		ps.setString(10, "Recibida");
+		ps.setInt(11, 2024);
 
 		int filas = ps.executeUpdate();
 		ps.close();
@@ -90,7 +97,7 @@ public class DaoSolicitud {
 
 		Solicitud s = new Solicitud(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
 				rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getInt(11),
-				rs.getBoolean(12), rs.getBoolean(13), rs.getString(14));
+				rs.getBoolean(12), rs.getBoolean(13), rs.getString(14), rs.getInt(15));
 
 		return s;
 	}
@@ -116,7 +123,7 @@ public class DaoSolicitud {
 
 		Solicitud s = new Solicitud(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
 				rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getInt(11),
-				rs.getBoolean(12), rs.getBoolean(13), rs.getString(14));
+				rs.getBoolean(12), rs.getBoolean(13), rs.getString(14), rs.getInt(15));
 
 		return s;
 	}
@@ -173,7 +180,7 @@ public class DaoSolicitud {
 			result.add(new Solicitud(rs.getInt("id"), rs.getString("Dni"), rs.getInt("cod_actividad"),
 					rs.getString("nombre"), rs.getString("apellido1"), rs.getString("apellido2"), rs.getString("email"),
 					rs.getString("direccion"), rs.getInt("telefono"), rs.getString("f_nacimiento"),
-					rs.getInt("num_sorteo"), rs.getBoolean("seleccionado"), rs.getBoolean("pago"), rs.getString("estado")));
+					rs.getInt("num_sorteo"), rs.getBoolean("seleccionado"), rs.getBoolean("pago"), rs.getString("estado"), rs.getInt("edicion")));
 
 		}
 
@@ -220,7 +227,8 @@ public class DaoSolicitud {
 	    ps.setBoolean(11, s.isSeleccionado());
 	    ps.setBoolean(12, s.isPago());
 	    ps.setString(13, s.getEstado());
-	    ps.setInt(14, s.getId()); // Al final porque es el criterio en el WHERE
+	    ps.setInt(14, s.getEdicion());
+	    ps.setInt(15, s.getId()); // Al final porque es el criterio en el WHERE
 	    int result = ps.executeUpdate();
 	    ps.close();
 	    return s;

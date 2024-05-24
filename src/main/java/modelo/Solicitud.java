@@ -34,6 +34,7 @@ public class Solicitud {
 	private boolean seleccionado;
 	private boolean pago;
 	private String estado;
+	private int edicion;
 
 	/**
 	 * Constructor por defecto.
@@ -72,10 +73,11 @@ public class Solicitud {
 	 *                      </ul>
 	 * @param estado        Estado de la solicitud (ejemplo: "Recibida",
 	 *                      "Seleccionado", "Reserva", "Anulada").
+	 * @param edicion		Año de edción.
 	 */
 	public Solicitud(int id, String dni, int cod_actividad, String nombre, String apellido1, String apellido2,
 			String email, String direccion, int telefono, String f_nacimiento, int num_sorteo, boolean seleccionado,
-			boolean pago, String estado) {
+			boolean pago, String estado, int edicion) {
 		super();
 		this.id = id;
 		this.dni = dni;
@@ -91,6 +93,7 @@ public class Solicitud {
 		this.seleccionado = seleccionado;
 		this.pago = pago;
 		this.estado = estado;
+		this.edicion = edicion;
 	}
 
 	/**
@@ -124,13 +127,14 @@ public class Solicitud {
 	 *                      </ul>
 	 * @param estado        Estado de la solicitud (ejemplo: "Recibida",
 	 *                      "Seleccionado", "Reserva", "Anulada").
+	 * @param edicion		Año de edición.
 	 */
 	// Otro listar una vez añadida. Sin ID 
 	// El user externo añade solicitud. De aquí cogeré el el registro y lo muestro a modo informativo
 	// Como indicando "Solicitud recibida" pondré eso en estado.
 	public Solicitud(String dni, int cod_actividad, String nombre, String apellido1, String apellido2, String email,
 			String direccion, int telefono, String f_nacimiento, int num_sorteo, boolean seleccionado, boolean pago,
-			String estado) {
+			String estado, int edicion) {
 		super();
 		this.dni = dni;
 		this.cod_actividad = cod_actividad;
@@ -145,9 +149,26 @@ public class Solicitud {
 		this.seleccionado = seleccionado;
 		this.pago = pago;
 		this.estado = estado;
+		this.edicion = edicion;
 	}
+	
+	/**
+	 * Constructor para una solicitud del usuario externo, sin identificador.
+	 * Será utilizado por el usuario externo para añadir una nueva solicitud.
+	 * 
+	 * @param id            Identificador único de la solicitud.
+	 * @param dni           Documento Nacional de Identidad del solicitante.
+	 * @param cod_actividad Código de la actividad a la que se postula la solicitud.
+	 * @param nombre        Nombre del solicitante.
+	 * @param apellido1     Primer apellido del solicitante.
+	 * @param apellido2     Segundo apellido del solicitante.
+	 * @param email         Dirección de correo electrónico del solicitante.
+	 * @param direccion     Dirección física del solicitante.
+	 * @param telefono      Número de teléfono.
+	 * @param f_nacimiento  Fecha de nacimiento.
+	 */
 
-	// Otro sin id para mandar a la BDD. Campos del formulario para usuario externo
+	//Otro sin id para mandar a la BDD. Campos del formulario para usuario externo
 	public Solicitud(String dni, int cod_actividad, String nombre, String apellido1, String apellido2, String email,
 			String direccion, int telefono, String f_nacimiento) {
 		super();
@@ -183,6 +204,7 @@ public class Solicitud {
 	 */
 	// Otro para el resultado del buscador. Identificativo de solicitud.
 	// Formulario usuario. User externo
+	/*
 	public Solicitud(int id, String dni, int cod_actividad, String nombre, String email, int telefono, int num_sorteo,
 			boolean pago, boolean seleccionado, String estado) {
 		super();
@@ -196,7 +218,7 @@ public class Solicitud {
 		this.pago = pago;
 		this.seleccionado = seleccionado;
 		this.estado = estado;
-	}
+	}*/
 
 	/**
 	 * Obtiene el identificador de la solicitud
@@ -470,6 +492,22 @@ public class Solicitud {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	
+	/**
+	 * Obtiene el año de edición a la que se presenta la solicitud.
+	 * @return Año de edición del programa Campaña de Verano.
+	 */
+	public int getEdicion() {
+		return edicion;
+	}
+	
+	/**
+	 * Establece el año de edición en el que la solicitud participa.
+	 * @param edicion	Año de edición del programa Campaña de Verano
+	 */
+	public void setEdicion (int edicion) {
+		this.edicion=edicion;
+	}
 
 	/**
 	 * Inserta la instancia para solicitud en la base de datos. Utiliza una
@@ -516,6 +554,7 @@ public class Solicitud {
 		this.setSeleccionado(aux.isSeleccionado());
 		this.setPago(aux.isPago());
 		this.setEstado(aux.getEstado());
+		this.setEdicion(aux.getEdicion());
 	}
 
 	/**
@@ -553,6 +592,7 @@ public class Solicitud {
 		this.setSeleccionado(aux.isSeleccionado());
 		this.setPago(aux.isPago());
 		this.setEstado(aux.getEstado());
+		this.setEdicion(aux.getEdicion());
 	}
 /*
 	public void buscadorDni(String dni) throws SQLException {// para el usuaario
@@ -632,7 +672,7 @@ public class Solicitud {
 		return "Solicitud [id=" + id + ", dni=" + dni + ", cod_actividad=" + cod_actividad + ", nombre=" + nombre
 				+ ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", email=" + email + ", direccion="
 				+ direccion + ", telefono=" + telefono + ", f_nacimiento=" + f_nacimiento + ", num_sorteo=" + num_sorteo
-				+ ", seleccionado=" + seleccionado + ", pago=" + pago + ", estado=" + estado + "]";
+				+ ", seleccionado=" + seleccionado + ", pago=" + pago + ", estado=" + estado + ", edicion=" + edicion + "]";
 	}
 
 }

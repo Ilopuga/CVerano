@@ -62,8 +62,7 @@ function pintarResultados(datos) {
   document.getElementById("seleccionado").innerText = datos.seleccionado
     ? +datos.seleccionado
     : "Sorteo no realizado"
-  //Si estoy listando es que existe, por lo tanto está recibida
+  //Los `predefino en el insert de la clase DAo
   document.getElementById("estado").innerText = datos.estado
-    ? +datos.estado
-    : "Recibida"
+  document.getElementById("edicion").innerText = datos.edicion
 }

@@ -60,16 +60,17 @@ public class BuscarSolicitud extends HttpServlet {
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					response.sendRedirect("/error.html");
+					response.sendRedirect("error.html");
 				}
 			} else {
-				response.sendRedirect("/error.html?error=4");
+				System.out.println("DNI No encontrado");
+                response.sendRedirect("error.html?error=1");
 
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			response.sendRedirect("/Verano/error.html");
+			response.sendRedirect("error.html");
 
 		}
 

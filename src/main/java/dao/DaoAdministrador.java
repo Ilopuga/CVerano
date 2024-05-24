@@ -8,11 +8,15 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
+import modelo.Actividad;
 import modelo.Administrador;
 
 /**
- * Clase DAO para manejar las operaciones de base de datos para la entidad Administrador.
+ * Clase DAO para manejar las operaciones de la base de datos relacionadas con las entidades de tipo {@link Administrador}
  * Implementa el patrón Singleton para asegurar una única instancia de la conexión a la base de datos.
+ * @author Inma López Ugalde
+ * @version 17/05/2024
+ * @see <a href="http://IP...">Aplicación</a>
  */
 public class DaoAdministrador {
 

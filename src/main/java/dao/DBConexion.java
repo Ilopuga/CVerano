@@ -5,9 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import modelo.Solicitud;
+
 /**
  * Clase encargada de establecer y manejar la conexión con la base de datos.
  * Utiliza el patrón Singleton para asegurar que solo exista una instancia de la conexión.
+ * @author Inma López Ugalde
+ * @version 15/05/2024
+ * @see <a href="http://IP...">Aplicación</a>
  */
 public class DBConexion {
 
@@ -35,9 +40,5 @@ public class DBConexion {
 		return instance;
 		
 	}
-	
-	
-	
-	
 	
 }

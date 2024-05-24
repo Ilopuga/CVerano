@@ -90,9 +90,10 @@ public class GestionSolicitud extends HttpServlet {
 			boolean seleccionado = Boolean.parseBoolean(request.getParameter("seleccionado"));
 			boolean pago = Boolean.parseBoolean(request.getParameter("pago"));
 			String estado = request.getParameter("estado");
+			int edicion = Integer.parseInt(request.getParameter("edicion"));
 			int id = Integer.parseInt(request.getParameter("id"));
 			try {
-	            Solicitud s = new Solicitud(dni, cod_actividad, nombre, apellido1, apellido2, email, direccion,telefono, f_nacimiento, num_sorteo, seleccionado, pago, estado); 
+	            Solicitud s = new Solicitud(dni, cod_actividad, nombre, apellido1, apellido2, email, direccion,telefono, f_nacimiento, num_sorteo, seleccionado, pago, estado, edicion); 
 				int idInt = id;
 				s.setId(idInt);
 				s.actualizar();

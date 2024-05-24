@@ -13,6 +13,9 @@ import modelo.Actividad;
 /**
  * Clase DAO para manejar las operaciones de base de datos relacionadas con las entidades de tipo {@link Actividad}.
  * Utiliza el patrón Singleton para asegurar una única instancia de conexión y acceso a la base de datos.
+ * @author Inma López Ugalde
+ * @version 17/05/2024
+ * @see <a href="http://IP...">Aplicación</a>
  */
 public class DaoActividad {
 

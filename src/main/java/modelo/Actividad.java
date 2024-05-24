@@ -97,7 +97,8 @@ public class Actividad {
 		this.e_max = e_max;
 		this.plazas = plazas;
 	}
-
+	
+	
 	/**
 	 * Constructor que se utilizará para mostrar las actividades disponibles en la
 	 * base de datos. El resultado será mostrado en un select en el formulario de
@@ -106,10 +107,10 @@ public class Actividad {
 	 * @param tema Tema de la actividad
 	 */
 	// Para el Select del formulario solicitud
-	public Actividad(String tema) {
+	/*public Actividad(String tema) {
 		super();
 		this.tema = tema;
-	}
+	}*/
 
 	// Empiezan los Getters y Setters
 
