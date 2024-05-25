@@ -41,10 +41,7 @@ public class BuscarSolicitud extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
 		PrintWriter respuesta = response.getWriter();
-
 		String dni = request.getParameter("dni");
 		DaoSolicitud dao;
 		try {
@@ -56,24 +53,18 @@ public class BuscarSolicitud extends HttpServlet {
 					s.obtenerPorDni(dni);
 					respuesta.print(s.dameJson());
 					System.out.println(s.dameJson());// Comprobar que me llega desde la Bdd. Siguiente HTML
-
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 					response.sendRedirect("error.html");
 				}
 			} else {
 				System.out.println("DNI No encontrado");
                 response.sendRedirect("error.html?error=1");
-
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			response.sendRedirect("error.html");
-
 		}
-
 	}
 
 	/**
