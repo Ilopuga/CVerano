@@ -23,8 +23,19 @@ function iniciarSolicitud() {
 
 function llamoSol(dni) {
   fetch("BuscarSolicitud?dni=" + dni)
-    .then((response) => response.json())
-    .then((data) => pintarResultados(data))
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Problema con la respuesta del servidor")
+      }
+      return response.json()
+    })
+    .then((data) => {
+      if (data.error) {
+        alert(data.error) // Muestra el mensaje de error al usuario
+      } else {
+        pintarResultados(data) // Función para procesar y mostrar los datos
+      }
+    })
 }
 
 //Función para obtener el valor de un parametro en el GET. Expresiones regulares

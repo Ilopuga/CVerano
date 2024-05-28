@@ -7,17 +7,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import modelo.Actividad;
 import modelo.Solicitud;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
-import dao.DaoActividad;
 import dao.DaoSolicitud;
 
 /**
@@ -55,18 +50,17 @@ public class BuscarSolicitud extends HttpServlet {
 					System.out.println(s.dameJson());// Comprobar que me llega desde la Bdd. Siguiente HTML
 				} catch (SQLException e) {
 					e.printStackTrace();
-					response.sendRedirect("error.html");
+	                respuesta.print("{\"error\":\"Error al obtener la solicitud por DNI\"}");
 				}
 			} else {
 				System.out.println("DNI No encontrado");
-                response.sendRedirect("error.html?error=1");
+	            respuesta.print("{\"error\":\"DNI no encontrado\"}");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			response.sendRedirect("error.html");
+	        respuesta.print("{\"error\":\"Error en la base de datos\"}");
 		}
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
