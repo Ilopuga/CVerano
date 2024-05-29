@@ -1,0 +1,28 @@
+-- Algunos INSERT de ejemplo
+INSERT INTO solicitud VALUES (NULL, '89324598I', '33', 'Patricia', 'López', '', 'pati@gmail.com', 'C/ Sierra de Tormantos, 10. Plasencia', '659874632', '16/06/2008', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '85395145K', '33', 'Vera', 'Sánchez', 'López', 'veruki@gmail.com', 'Avenida del Arcoiris, 33. Plasencia', '927565068', '18/07/2007', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '88824598A', '33', 'Álvaro', 'Sánchez', 'López', 'alvarichucho@gmail.com', 'Paseo de Beukelaer, 1. Plasencia', '927595068', '11/08/2006', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '87324698V', '33', 'Antonio', 'López', '', 'lope@gmail.com', 'C/ Pozo, 12. City', '924530068', '21/07/2000', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '89324597H', '33', 'Rosa', 'Zambrano', '', 'rosita@gmail.com', 'C/ Buensuceso, 12. Fuente del Maestre', '924530192', '01/01/2002', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '89324742S', '35', 'Juan', 'Ugalde', '', 'traji@gmail.com', 'C/ Buensuceso, 12. Fuente del Maestre', '924530192', '01/02/2002', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '88324644B', '35', 'Ramona', 'Exposito', '', 'yaya@gmail.com', 'C/ Pozo, 12', '924530068', '01/03/2000', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '75324565Y', '35', 'Jaime', 'Morgado', '', 'jaimoso@gmail.com', 'C/ Hermanos Segura, 10, 9A. Badajoz', '924240068', '15/08/1999', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '89324394F', '35', 'Marta', 'Morgado', '', 'prince@gmail.com', 'Avenida del Lirio Real, 56, 4A. Badajoz', '924240156', '24/09/1995', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '88824511Z', '35', 'Fernando', 'Caballero', 'Moreno', 'nano@gmail.com', 'Paseo de los Pilares, 35, 3C. Mérida', '924223658', '23/04/1998', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '85224536R', '36', 'Hortensia', 'Galera', '', 'horten@gmail.com', 'C/ del Aeropuerto, 10. Madrid', '914530368', '16/02/2002', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '81323297G', '36', 'Juan', 'Daniel', 'Merino', 'juanda@gmail.com', 'C/ del Metro, 101. 8D. Madrid', '915630068', '12/03/1998', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '83324545Y', '36', 'Alba', 'Guardia', 'España', 'albin@gmail.com', 'Avenida de la Policia, 66. Madrid', '914537092', '03/01/2005', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '78332591W', '36', 'María', 'García', 'Pecero', 'lamari@gmail.com', 'C/ de los peces, 19. Feria', '924659782', '22/10/2004', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '89624593J', '36', 'Ana', 'Pascual', '', 'snygg@gmail.com', 'C/ Suecia, 56, 2A. Zafra', '698742478', '07/05/2000', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '85324657R', '37', 'Pablo', 'Neruda', '', '20poemas@1cancion.com', 'C/ de los poetas, 65. Bajo A. Mérida', '698326569', '01/02/2006', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '87336579E', '37', 'Gabriel', 'García', 'Marquez', '100@años.com', 'C/ de la soledad, 1. Aceuchal', '658964752', '05/08/2006', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '89574656F', '37', 'Virginia', 'Woolf', '', 'feminismo@gmail.com', 'C/ Bandera, 8. Almendralejo', '698748478', '01/12/2002', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '89714145P', '37', 'Miguel', 'De Cervantes', 'Saavedra', 'enunlugar@mancha.com', 'C/ Olvido, 65. Alcalá de Henares', '693693659', '01/06/2000', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '85924653T', '37', 'Taylor', 'Swift', '', 'richgirl@gmail.com', 'C/ del escenario, 12. Bajo D. Cáceres', '927985478', '30/12/2001', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '89724128O', '38', 'Charlize', 'Theron', '', 'mad@max.com', 'C/ J´adore, 22. 5C. Cáceres', '698326511', '08/07/2003', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '65984598U', '38', 'Hunter', 'Schafer', '', 'hunter@gmail.com', 'C/ de la euforia, 236. Coria', '697458412', '15/11/1997', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '89624478F', '38', 'Katniss', 'Everdeen', '', 'arquera@hungergames.com', 'C/ de la mineria, 89. Distrito 11', '647518454', '14/06/1998', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '89787478V', '38', 'Héctor', 'Troya', 'Bana', 'eric@gmail.com', 'C/ de los caballos, 45. 4E. Badajoz', '924247856', '07/09/2002', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '87758841A', '38', 'Cersei', 'Lanister', '', 'cersei@hieloyfuego.com', 'C/ del oro, 1. Roca Casterly', '698745879', '01/01/2000', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '87758842B', '38', 'Jaime', 'Lanister', '', 'jaime@hieloyfuego.com', 'C/ del oro, 1. Roca Casterly', '698745879', '01/01/2000', NULL, NULL, NULL, NULL);
+INSERT INTO solicitud VALUES (NULL, '87758798Z', '38', 'Tyrion', 'Lanister', '', 'tyrion@hieloyfuego.com', 'C/ del oro, 1. Roca Casterly', '698745879', '06/07/2003', NULL, NULL, NULL, NULL);
