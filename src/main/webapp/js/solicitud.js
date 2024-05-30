@@ -25,30 +25,6 @@ function llamada(dni) {
     .then((data) => pintarResultados(data))
 }
 
-/*// Definir la función para pintar los resultados en la página
-function pintarResultados(datos) {
-  document.getElementById("id").innerText = datos.id
-  document.getElementById("nombre").innerText = datos.nombre
-  document.getElementById("dni").innerText = datos.dni
-  document.getElementById("cod_actividad").innerText = datos.cod_actividad
-  document.getElementById("email").innerText = datos.email
-  document.getElementById("telefono").innerText = datos.telefono
-  //Pregunto si el valor es nulo, indefinido, etc.(falsy) me muestra el texto "alternativo" que le indico
-  //El admin modificará en el futuro y mostrará otra cosa
-  document.getElementById("num_sorteo").innerText = datos.num_sorteo
-    ? +datos.num_sorteo
-    : "No asignado"
-  document.getElementById("pago").innerText = datos.pago
-    ? +datos.pago
-    : "No corresponde"
-  document.getElementById("seleccionado").innerText = datos.seleccionado
-    ? +datos.seleccionado
-    : "Sorteo no realizado"
-  document.getElementById("estado").innerText = datos.estado
-    ? +datos.estado
-    : "Recibida"
-}*/
-
 // Formulario de solicitud. Recibe el json con el cod_actividad, lo muestra en el select
 // y lo asigna al campo de entrada cod_actividad
 // Fetch para obtener las actividades desde el lson

@@ -9,9 +9,10 @@ import dao.DaoActividad;
 
 /**
  * Clase que representa una actividad en la aplicación. Los atributos relevantes
- * para una actividad son: código de actividad(como identificador único), nombre, lugar, tema, descripción, imagen, fecha de
- * inicio, fecha de fin, edad máxima permitida, edad mínima permitida y número
- * de plazas.
+ * para una actividad son: código de actividad(como identificador único),
+ * nombre, lugar, tema, descripción, imagen, fecha de inicio, fecha de fin, edad
+ * máxima permitida, edad mínima permitida y número de plazas.
+ * 
  * @author Inma López Ugalde
  * @version 15/05/2024
  * @see <a href="http://IP...">Aplicación</a>
@@ -97,8 +98,7 @@ public class Actividad {
 		this.e_max = e_max;
 		this.plazas = plazas;
 	}
-	
-	
+
 	/**
 	 * Constructor que se utilizará para mostrar las actividades disponibles en la
 	 * base de datos. El resultado será mostrado en un select en el formulario de
@@ -107,10 +107,9 @@ public class Actividad {
 	 * @param tema Tema de la actividad
 	 */
 	// Para el Select del formulario solicitud
-	/*public Actividad(String tema) {
-		super();
-		this.tema = tema;
-	}*/
+	/*
+	 * public Actividad(String tema) { super(); this.tema = tema; }
+	 */
 
 	// Empiezan los Getters y Setters
 
@@ -419,9 +418,8 @@ public class Actividad {
 	/**
 	 * Serializa una lista de códigos enteros a una cadena en formato JSON. Este
 	 * método es útil para generar la lista de selección de temas para el formulario
-	 * público, donde los códigos representan los temas de
-	 * las actividades.
-	 * Utiliza la biblioteca Gson para la serialización.
+	 * público, donde los códigos representan los temas de las actividades. Utiliza
+	 * la biblioteca Gson para la serialización.
 	 *
 	 * @param codigo La lista de códigos enteros que se desea serializar.
 	 * @return Una cadena en formato JSON que representa la lista de códigos.

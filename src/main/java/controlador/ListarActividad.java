@@ -50,7 +50,7 @@ public class ListarActividad extends HttpServlet {
 			try {
 				a.obtenerPorCod_actividad(cod_actividad);
 				respuesta.print(a.dameJson());
-				//System.out.println(a.dameJson());
+				// System.out.println(a.dameJson());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -68,13 +68,13 @@ public class ListarActividad extends HttpServlet {
 				int cod_actividad = Integer.parseInt(request.getParameter("cod_actividad"));
 				DaoActividad a = new DaoActividad();
 				a.borrar(cod_actividad);
-				//System.out.println("Estoy borrando " + cod_actividad);
-				//System.out.println("Estoy opcion " + opcion);
+				// System.out.println("Estoy borrando " + cod_actividad);
+				// System.out.println("Estoy opcion " + opcion);
 				respuesta.print(a.listarJson());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-	            response.sendRedirect("admin/error.html");
+				response.sendRedirect("admin/error.html");
 
 			}
 		}

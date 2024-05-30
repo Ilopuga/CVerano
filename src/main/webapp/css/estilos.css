@@ -421,12 +421,7 @@ nav-item.opened {
   color: red; /* Asegura que el color rojo se aplique */
 }
 
-/* Si decides utilizar una clase para mensajes de error debajo de los inputs
-.error-message {
-  color: red;
-  font-size: 0.8em; 
-  margin-top: 10px; 
-}*/
+
 /*Imagen error, más pequeña y centrada*/
 #error {
   display: block; /* Mostrar la imagen como un bloque */

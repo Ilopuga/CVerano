@@ -41,7 +41,7 @@ public class AsignarNumero extends HttpServlet {
 			e.printStackTrace();
 			response.sendRedirect("admin/error.html");
 		}
-	}	
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

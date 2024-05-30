@@ -92,10 +92,12 @@ public class GestionActividad extends HttpServlet {
 			Files.copy(input, file.toPath());
 		} catch (Exception e) {
 			e.printStackTrace();
-			/*response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write("{\"error\": \"Error al subir la foto. Contacte con el administrador.\"}");
-			response.sendRedirect("admin/add_actividad.html");*/
+			/*
+			 * response.setContentType("application/json");
+			 * response.setCharacterEncoding("UTF-8"); response.getWriter().
+			 * write("{\"error\": \"Error al subir la foto. Contacte con el administrador.\"}"
+			 * ); response.sendRedirect("admin/add_actividad.html");
+			 */
 		}
 
 		// ¡¡¡CUIDADO!!!

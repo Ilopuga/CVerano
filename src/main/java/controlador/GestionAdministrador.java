@@ -54,28 +54,28 @@ public class GestionAdministrador extends HttpServlet {
 		String id = request.getParameter("id");
 
 		try {
-	        DaoAdministrador dao = new DaoAdministrador();
-	        if (id == null || id.trim().isEmpty()) {
-	            if (dao.usuarioExiste(usuario)) {
-	                response.sendRedirect("admin/error.html?error=2");
-	            } else {
-	                Administrador a = new Administrador(usuario, hashedPass);
-	                dao.insertar(a);
-	                response.sendRedirect("admin/list_admin.html");
-	            }
-	        } else {
-	            Administrador a = new Administrador(usuario, hashedPass);
-	            int idInt = Integer.parseInt(id);  // Este puede lanzar NumberFormatException
-	            a.setId(idInt);
-	            dao.actualizar(a);
-	            response.sendRedirect("admin/list_admin.html");
-	        }
-	    } catch (SQLException | IOException e) {
-	        e.printStackTrace();
-	            response.sendRedirect("admin/error.html");
-	        }
-	    }
+			DaoAdministrador dao = new DaoAdministrador();
+			if (id == null || id.trim().isEmpty()) {
+				if (dao.usuarioExiste(usuario)) {
+					response.sendRedirect("admin/error.html?error=2");
+				} else {
+					Administrador a = new Administrador(usuario, hashedPass);
+					dao.insertar(a);
+					response.sendRedirect("admin/list_admin.html");
+				}
+			} else {
+				Administrador a = new Administrador(usuario, hashedPass);
+				int idInt = Integer.parseInt(id); // Este puede lanzar NumberFormatException
+				a.setId(idInt);
+				dao.actualizar(a);
+				response.sendRedirect("admin/list_admin.html");
+			}
+		} catch (SQLException | IOException e) {
+			e.printStackTrace();
+			response.sendRedirect("admin/error.html");
+		}
 	}
+}
 
 /*
  * try { DaoAdministrador dao = new DaoAdministrador(); if

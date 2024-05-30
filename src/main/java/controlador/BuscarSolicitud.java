@@ -50,17 +50,18 @@ public class BuscarSolicitud extends HttpServlet {
 					System.out.println(s.dameJson());// Comprobar que me llega desde la Bdd. Siguiente HTML
 				} catch (SQLException e) {
 					e.printStackTrace();
-	                respuesta.print("{\"error\":\"Error al obtener la solicitud por DNI\"}");
+					respuesta.print("{\"error\":\"Error al obtener la solicitud por DNI\"}");
 				}
 			} else {
 				System.out.println("DNI No encontrado");
-	            respuesta.print("{\"error\":\"DNI no encontrado\"}");
+				respuesta.print("{\"error\":\"DNI no encontrado\"}");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-	        respuesta.print("{\"error\":\"Error en la base de datos\"}");
+			respuesta.print("{\"error\":\"Error en la base de datos\"}");
 		}
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

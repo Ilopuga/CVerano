@@ -129,10 +129,10 @@ public class Administrador {
 	}
 
 	/**
-	 * Inserta un nuevo administrador en la base de datos. Utiliza el
-	 * patrón Singleton para obtener la instancia de {@link DaoAdministrador} y
-	 * llama al método {@code insertar} de esa clase para realizar la inserción en
-	 * la base de datos.
+	 * Inserta un nuevo administrador en la base de datos. Utiliza el patrón
+	 * Singleton para obtener la instancia de {@link DaoAdministrador} y llama al
+	 * método {@code insertar} de esa clase para realizar la inserción en la base de
+	 * datos.
 	 *
 	 * @throws SQLException Si ocurre un error durante el proceso de inserción en la
 	 *                      base de datos.
